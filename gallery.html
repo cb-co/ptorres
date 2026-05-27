@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<title>Proyectos — Torres Rodriguez Arquitectos</title>
+<meta name="description" content="Obra seleccionada de Torres Rodriguez Arquitectos: residencias, interiores y espacios comerciales en Santo Domingo y la República Dominicana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="Torres Rodriguez Arquitectos — Inicio">
+    <span class="logo-mark" aria-hidden="true"></span>
+    <span class="logo-text">
+      Torres Rodriguez
+      <span class="logo-text-sub">Arquitectos</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">Nosotros</a></li>
+    <li><a href="gallery.html" class="is-active">Proyectos</a></li>
+    <li><a href="contact.html">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" type="button">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="3.4"/>
+        <line x1="12" y1="2" x2="12" y2="4.5"/>
+        <line x1="12" y1="19.5" x2="12" y2="22"/>
+        <line x1="4.5" y1="4.5" x2="6.3" y2="6.3"/>
+        <line x1="17.7" y1="17.7" x2="19.5" y2="19.5"/>
+        <line x1="2" y1="12" x2="4.5" y2="12"/>
+        <line x1="19.5" y1="12" x2="22" y2="12"/>
+        <line x1="4.5" y1="19.5" x2="6.3" y2="17.7"/>
+        <line x1="17.7" y1="6.3" x2="19.5" y2="4.5"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21 12.6A8.5 8.5 0 1 1 11.4 3 6.6 6.6 0 0 0 21 12.6z"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <span class="section-index">Proyectos</span>
+    <h1 class="page-hero-title">Obra <em>seleccionada</em>.</h1>
+    <p class="page-hero-sub">
+      Una década de residencias, interiores y espacios comerciales — cada uno
+      concebido como un todo, desde la estructura hasta el último detalle.
+    </p>
+  </div>
+</header>
+
+<section class="gallery">
+  <!-- Featured project (always visible) -->
+  <div class="portfolio-grid" style="margin-bottom: 4rem;">
+    <article class="project is-feature reveal">
+      <div class="project-link">
+        <div class="project-img pp-1"></div>
+        <div class="project-meta">
+          <span class="project-name">Residencia Aguamar</span>
+          <span class="project-tag">Residencial · 2024 · Casa de Campo</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Category filter -->
+  <div class="gallery-filter reveal">
+    <button class="filter-btn is-active" data-filter="all" type="button">Todos</button>
+    <button class="filter-btn" data-filter="residencial" type="button">Residencial</button>
+    <button class="filter-btn" data-filter="interiores" type="button">Interiores</button>
+    <button class="filter-btn" data-filter="comercial" type="button">Comercial</button>
+    <button class="filter-btn" data-filter="hospitalidad" type="button">Hospitalidad</button>
+  </div>
+
+  <!-- Filterable grid -->
+  <div class="gallery-grid">
+    <article class="project reveal" data-category="comercial">
+      <div class="project-link">
+        <div class="project-img pp-2"></div>
+        <div class="project-meta">
+          <span class="project-name">Sarev Studio</span>
+          <span class="project-tag">Comercial · 2024</span>
+        </div>
+      </div>
+    </article>
+    <article class="project reveal reveal-d1" data-category="residencial">
+      <div class="project-link">
+        <div class="project-img pp-3"></div>
+        <div class="project-meta">
+          <span class="project-name">Lino Suave Suite</span>
+          <span class="project-tag">Residencial · 2023</span>
+        </div>
+      </div>
+    </article>
+    <article class="project reveal" data-category="hospitalidad">
+      <div class="project-link">
+        <div class="project-img pp-4"></div>
+        <div class="project-meta">
+          <span class="project-name">Villa Terracina</span>
+          <span class="project-tag">Hospitalidad · 2023</span>
+        </div>
+      </div>
+    </article>
+    <article class="project reveal reveal-d1" data-category="interiores">
+      <div class="project-link">
+        <div class="project-img pp-5"></div>
+        <div class="project-meta">
+          <span class="project-name">Estudio Marés</span>
+          <span class="project-tag">Interiores · 2022</span>
+        </div>
+      </div>
+    </article>
+    <article class="project reveal" data-category="comercial">
+      <div class="project-link">
+        <div class="project-img pp-6"></div>
+        <div class="project-meta">
+          <span class="project-name">Atelier Merbau</span>
+          <span class="project-tag">Comercial · 2022</span>
+        </div>
+      </div>
+    </article>
+    <article class="project reveal reveal-d1" data-category="interiores">
+      <div class="project-link">
+        <div class="project-img pp-7"></div>
+        <div class="project-meta">
+          <span class="project-name">Cocina Salobre</span>
+          <span class="project-tag">Interiores · 2024</span>
+        </div>
+      </div>
+    </article>
+    <article class="project reveal" data-category="residencial">
+      <div class="project-link">
+        <div class="project-img pp-8"></div>
+        <div class="project-meta">
+          <span class="project-name">Apartamento Brisa</span>
+          <span class="project-tag">Residencial · 2024</span>
+        </div>
+      </div>
+    </article>
+    <article class="project reveal reveal-d1" data-category="residencial">
+      <div class="project-link">
+        <div class="project-img pp-9"></div>
+        <div class="project-meta">
+          <span class="project-name">Casa Lumbre</span>
+          <span class="project-tag">Residencial · 2023</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="contact">
+  <span class="section-index reveal">Contacto</span>
+  <h2 class="section-title reveal">¿Imaginas tu próximo<br><em>proyecto</em>?</h2>
+  <p class="contact-sub reveal reveal-d1">
+    Conversemos. Aceptamos un número limitado de encargos al año para dedicar
+    a cada cliente la atención que merece.
+  </p>
+  <a href="contact.html" class="link-underline reveal reveal-d2">Escríbenos</a>
+</section>
+
+<footer>
+  <p>© 2026 Torres Rodriguez Arquitectos · Santo Domingo</p>
+  <ul class="footer-links">
+    <li><a href="about.html">Nosotros</a></li>
+    <li><a href="gallery.html">Proyectos</a></li>
+    <li><a href="contact.html">Contacto</a></li>
+    <li><a href="https://instagram.com/ptorres.rodriguez" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="privacy.html">Privacidad</a></li>
+  </ul>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

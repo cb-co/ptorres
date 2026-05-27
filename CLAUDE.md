@@ -140,4 +140,4 @@ Add class `reveal` to any element. Optionally add `reveal-d1`, `reveal-d2`, or `
 - Do not use `@media (prefers-color-scheme: dark)` — light is the unconditional default. Use `[data-theme="dark"]` selectors only.
 - When changing palette colors, update both `:root` (light) and `[data-theme="dark"]` blocks together.
 - Real images go under `assets/img/` and are referenced with relative paths (no leading slash).
-- Placeholders to replace before launch: FAQ answers, phone/address, team names/bios, Facebook/Pinterest URLs (Instagram handle `@ptorres.rodriguez` is real), and all Unsplash images.
+- Placeholders to replace before launch: FAQ answers, team names/bios, Facebook/Pinterest URLs (Instagram `@ptorres.rodriguez`, phone, email, and address are real), and all Unsplash images.

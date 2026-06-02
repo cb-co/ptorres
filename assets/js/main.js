@@ -34,6 +34,34 @@
     reveals.forEach(function (el) { el.classList.add('visible'); });
   }
 
+  /* ── Mobile nav ── */
+  var navToggle = document.getElementById('navToggle');
+  var navMobile = document.getElementById('navMobile');
+  if (navToggle && navMobile) {
+    function closeMobileNav() {
+      navMobile.classList.remove('is-open');
+      navToggle.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navMobile.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    navToggle.addEventListener('click', function () {
+      var isOpen = navMobile.classList.contains('is-open');
+      if (isOpen) { closeMobileNav(); return; }
+      navMobile.classList.add('is-open');
+      navToggle.classList.add('is-open');
+      navToggle.setAttribute('aria-expanded', 'true');
+      navMobile.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+    navMobile.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', closeMobileNav);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navMobile.classList.contains('is-open')) closeMobileNav();
+    });
+  }
+
   /* ── Lightbox ── */
   var lb = document.getElementById('lightbox');
   if (lb) {

@@ -34,20 +34,114 @@
     reveals.forEach(function (el) { el.classList.add('visible'); });
   }
 
-  /* ── Gallery category filter ── */
-  var filterBtns = document.querySelectorAll('.filter-btn');
-  if (filterBtns.length) {
-    var projects = document.querySelectorAll('.gallery-grid .project');
-    filterBtns.forEach(function (fb) {
-      fb.addEventListener('click', function () {
-        var cat = fb.getAttribute('data-filter');
-        filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
-        fb.classList.add('is-active');
-        projects.forEach(function (p) {
-          var show = cat === 'all' || p.getAttribute('data-category') === cat;
-          p.classList.toggle('is-hidden', !show);
-        });
+  /* ── Lightbox ── */
+  var lb = document.getElementById('lightbox');
+  if (lb) {
+    var projectImages = {
+      merlot: [
+        'assets/img/projects/merlot/01-salon.jpg',
+        'assets/img/projects/merlot/02-foyer.jpg',
+        'assets/img/projects/merlot/03-salon-wide.jpg',
+        'assets/img/projects/merlot/04-kitchen.jpg',
+        'assets/img/projects/merlot/05-dining.jpg',
+        'assets/img/projects/merlot/06-bedroom.jpg',
+        'assets/img/projects/merlot/07-tv-room.jpg',
+        'assets/img/projects/merlot/08-dining-window.jpg',
+        'assets/img/projects/merlot/09-coffee-table.jpg',
+        'assets/img/projects/merlot/10-bedroom-sheer.jpg'
+      ],
+      merlot25: [
+        'assets/img/projects/merlot25/01-foyer.jpg',
+        'assets/img/projects/merlot25/02-sconce.jpg',
+        'assets/img/projects/merlot25/03-salon.jpg',
+        'assets/img/projects/merlot25/04-panoramic.jpg',
+        'assets/img/projects/merlot25/05-dining.jpg',
+        'assets/img/projects/merlot25/06-dining-detail.jpg',
+        'assets/img/projects/merlot25/07-bedroom.jpg',
+        'assets/img/projects/merlot25/08-bathroom.jpg',
+        'assets/img/projects/merlot25/09-terrace.jpg',
+        'assets/img/projects/merlot25/10-terrace-plants.jpg'
+      ],
+      costambar: [
+        'assets/img/projects/costambar/01-living.jpg',
+        'assets/img/projects/costambar/02-tv-wall.jpg',
+        'assets/img/projects/costambar/03-open-plan.jpg',
+        'assets/img/projects/costambar/04-kitchen.jpg',
+        'assets/img/projects/costambar/05-dining-kitchen.jpg',
+        'assets/img/projects/costambar/06-dining.jpg',
+        'assets/img/projects/costambar/07-bedroom-lamp.jpg',
+        'assets/img/projects/costambar/08-bedroom.jpg',
+        'assets/img/projects/costambar/09-bedroom-wall.jpg',
+        'assets/img/projects/costambar/10-bathroom.jpg'
+      ]
+    };
+    var projectNames = { merlot: 'Gran Merlot · 2024', merlot25: 'Gran Merlot · 2025', costambar: 'Villa Costambar' };
+
+    var lbImg     = document.getElementById('lbImg');
+    var lbCount   = document.getElementById('lbCount');
+    var lbProject = document.getElementById('lbProject');
+    var lbClose   = document.getElementById('lbClose');
+    var lbPrev    = document.getElementById('lbPrev');
+    var lbNext    = document.getElementById('lbNext');
+
+    var currentImages = [];
+    var currentKey    = '';
+    var currentIdx    = 0;
+
+    function showImage() {
+      lbImg.src = currentImages[currentIdx];
+      lbImg.alt = (projectNames[currentKey] || '') + ' — foto ' + (currentIdx + 1);
+      lbCount.textContent = (currentIdx + 1) + ' / ' + currentImages.length;
+      lbProject.textContent = projectNames[currentKey] || '';
+    }
+
+    function openLightbox(key) {
+      currentKey    = key;
+      currentImages = projectImages[key] || [];
+      currentIdx    = 0;
+      showImage();
+      lb.classList.add('is-open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(function () { lbImg.src = ''; }, 300);
+    }
+
+    function prevImage() { currentIdx = (currentIdx - 1 + currentImages.length) % currentImages.length; showImage(); }
+    function nextImage() { currentIdx = (currentIdx + 1) % currentImages.length; showImage(); }
+
+    document.querySelectorAll('[data-project]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openLightbox(el.getAttribute('data-project'));
       });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(el.getAttribute('data-project')); }
+      });
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', function (e) { e.stopPropagation(); prevImage(); });
+    lbNext.addEventListener('click', function (e) { e.stopPropagation(); nextImage(); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    });
+
+    var touchStartX = 0;
+    lb.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend',   function (e) {
+      var diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) { diff > 0 ? nextImage() : prevImage(); }
     });
   }
 

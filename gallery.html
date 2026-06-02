@@ -12,7 +12,6 @@
 <meta name="keywords" content="proyectos de arquitectura, obras de interiorismo, residencias santo domingo, diseño residencial, diseño comercial, hospitalidad, remodelación, portafolio">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://images.unsplash.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="canonical" href="https://ptorres.vercel.app/gallery.html">
 <meta name="author" content="Torres Rodriguez Arquitectos">
@@ -83,104 +82,73 @@
 </header>
 
 <section class="gallery">
-  <!-- Featured project (always visible) -->
-  <div class="portfolio-grid" style="margin-bottom: 4rem;">
-    <article class="project is-feature reveal">
-      <div class="project-link">
-        <div class="project-img pp-1"></div>
+  <!-- Featured: Gran Merlot 2024 — above the filter -->
+  <div class="portfolio-grid" style="margin-bottom:4rem;">
+    <article class="project is-feature reveal" data-category="residencial" data-project="merlot">
+      <div class="project-link" role="button" tabindex="0" aria-label="Ver galería: Gran Merlot 2024">
+        <div class="project-img">
+          <img src="assets/img/projects/merlot/01-salon.jpg"
+               alt="Gran Merlot — sala principal, Santo Domingo"
+               loading="eager" width="1600" height="1066">
+          <span class="project-count" aria-hidden="true">10 fotos</span>
+        </div>
         <div class="project-meta">
-          <span class="project-name">Residencia Aguamar</span>
-          <span class="project-tag">Residencial · 2024 · Casa de Campo</span>
+          <span class="project-name">Gran Merlot</span>
+          <span class="project-tag">Residencial · 2024 · Santo Domingo</span>
         </div>
       </div>
     </article>
   </div>
 
-  <!-- Category filter -->
-  <div class="gallery-filter reveal">
-    <button class="filter-btn is-active" data-filter="all" type="button">Todos</button>
-    <button class="filter-btn" data-filter="residencial" type="button">Residencial</button>
-    <button class="filter-btn" data-filter="interiores" type="button">Interiores</button>
-    <button class="filter-btn" data-filter="comercial" type="button">Comercial</button>
-    <button class="filter-btn" data-filter="hospitalidad" type="button">Hospitalidad</button>
-  </div>
-
-  <!-- Filterable grid -->
+  <!-- Grid -->
   <div class="gallery-grid">
-    <article class="project reveal" data-category="comercial">
-      <div class="project-link">
-        <div class="project-img pp-2"></div>
+    <!-- Villa Costambar -->
+    <article class="project reveal" data-category="residencial" data-project="costambar">
+      <div class="project-link" role="button" tabindex="0" aria-label="Ver galería: Villa Costambar">
+        <div class="project-img">
+          <img src="assets/img/projects/costambar/01-living.jpg"
+               alt="Villa Costambar — sala de estar, Puerto Plata"
+               loading="lazy" width="1600" height="1066">
+          <span class="project-count" aria-hidden="true">10 fotos</span>
+        </div>
         <div class="project-meta">
-          <span class="project-name">Sarev Studio</span>
-          <span class="project-tag">Comercial · 2024</span>
+          <span class="project-name">Villa Costambar</span>
+          <span class="project-tag">Residencial · 2024 · Puerto Plata</span>
         </div>
       </div>
     </article>
-    <article class="project reveal reveal-d1" data-category="residencial">
-      <div class="project-link">
-        <div class="project-img pp-3"></div>
-        <div class="project-meta">
-          <span class="project-name">Lino Suave Suite</span>
-          <span class="project-tag">Residencial · 2023</span>
+
+    <!-- Gran Merlot 2025 -->
+    <article class="project reveal reveal-d1" data-category="residencial" data-project="merlot25">
+      <div class="project-link" role="button" tabindex="0" aria-label="Ver galería: Gran Merlot 2025">
+        <div class="project-img">
+          <img src="assets/img/projects/merlot25/01-foyer.jpg"
+               alt="Gran Merlot — foyer, Santo Domingo"
+               loading="lazy" width="1280" height="1600">
+          <span class="project-count" aria-hidden="true">10 fotos</span>
         </div>
-      </div>
-    </article>
-    <article class="project reveal" data-category="hospitalidad">
-      <div class="project-link">
-        <div class="project-img pp-4"></div>
         <div class="project-meta">
-          <span class="project-name">Villa Terracina</span>
-          <span class="project-tag">Hospitalidad · 2023</span>
-        </div>
-      </div>
-    </article>
-    <article class="project reveal reveal-d1" data-category="interiores">
-      <div class="project-link">
-        <div class="project-img pp-5"></div>
-        <div class="project-meta">
-          <span class="project-name">Estudio Marés</span>
-          <span class="project-tag">Interiores · 2022</span>
-        </div>
-      </div>
-    </article>
-    <article class="project reveal" data-category="comercial">
-      <div class="project-link">
-        <div class="project-img pp-6"></div>
-        <div class="project-meta">
-          <span class="project-name">Atelier Merbau</span>
-          <span class="project-tag">Comercial · 2022</span>
-        </div>
-      </div>
-    </article>
-    <article class="project reveal reveal-d1" data-category="interiores">
-      <div class="project-link">
-        <div class="project-img pp-7"></div>
-        <div class="project-meta">
-          <span class="project-name">Cocina Salobre</span>
-          <span class="project-tag">Interiores · 2024</span>
-        </div>
-      </div>
-    </article>
-    <article class="project reveal" data-category="residencial">
-      <div class="project-link">
-        <div class="project-img pp-8"></div>
-        <div class="project-meta">
-          <span class="project-name">Apartamento Brisa</span>
-          <span class="project-tag">Residencial · 2024</span>
-        </div>
-      </div>
-    </article>
-    <article class="project reveal reveal-d1" data-category="residencial">
-      <div class="project-link">
-        <div class="project-img pp-9"></div>
-        <div class="project-meta">
-          <span class="project-name">Casa Lumbre</span>
-          <span class="project-tag">Residencial · 2023</span>
+          <span class="project-name">Gran Merlot</span>
+          <span class="project-tag">Residencial · 2025 · Santo Domingo</span>
         </div>
       </div>
     </article>
   </div>
 </section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Galería de imágenes">
+  <button class="lb-close" id="lbClose" aria-label="Cerrar galería">&#215;</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Foto anterior">&#8249;</button>
+  <button class="lb-next" id="lbNext" aria-label="Foto siguiente">&#8250;</button>
+  <div class="lb-img-wrap">
+    <img class="lb-img" id="lbImg" src="" alt="">
+  </div>
+  <div class="lb-bar">
+    <span class="lb-project" id="lbProject"></span>
+    <span class="lb-count" id="lbCount"></span>
+  </div>
+</div>
 
 <section class="contact">
   <span class="section-index reveal">Contacto</span>

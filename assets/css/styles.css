@@ -150,15 +150,15 @@ nav {
   display: flex; align-items: center; justify-content: center;
   padding: 110px 6vw 6rem;
   background:
-    linear-gradient(180deg, rgba(32, 22, 14, 0.42) 0%, rgba(32, 22, 14, 0.52) 55%, rgba(20, 14, 8, 0.68) 100%),
-    url('https://images.unsplash.com/photo-1721630175454-0ca4517bb530?w=1920&q=75&auto=format&fit=crop') center / cover no-repeat;
+    linear-gradient(180deg, rgba(32, 22, 14, 0.38) 0%, rgba(32, 22, 14, 0.50) 55%, rgba(20, 14, 8, 0.65) 100%),
+    url('../img/hero.jpg') center / cover no-repeat;
   text-align: center;
   overflow: hidden;
 }
 [data-theme="dark"] .hero {
   background:
-    linear-gradient(180deg, rgba(15, 10, 5, 0.60) 0%, rgba(15, 10, 5, 0.68) 55%, rgba(10, 7, 4, 0.78) 100%),
-    url('https://images.unsplash.com/photo-1721630175454-0ca4517bb530?w=1920&q=75&auto=format&fit=crop') center / cover no-repeat;
+    linear-gradient(180deg, rgba(15, 10, 5, 0.55) 0%, rgba(15, 10, 5, 0.65) 55%, rgba(10, 7, 4, 0.75) 100%),
+    url('../img/hero.jpg') center / cover no-repeat;
 }
 
 .hero-content {
@@ -241,7 +241,7 @@ nav {
 
 /* ────────── PAGE HERO (sub-pages) ────────── */
 .page-hero {
-  padding: 15rem 6vw 5rem;
+  padding: 11rem 6vw 4rem;
   text-align: center;
   background: var(--bg);
   transition: background 0.6s ease;
@@ -289,7 +289,7 @@ nav {
 
 /* ────────── ABOUT / NOSOTROS ────────── */
 .about {
-  padding: 10rem 6vw 6rem;
+  padding: 4rem 6vw 8rem;
   background: var(--bg);
   transition: background 0.6s ease;
 }
@@ -309,7 +309,8 @@ nav {
 }
 .about-visual-img {
   position: absolute; inset: 0;
-  background: url('assets/img/team-portrait.jpg') center / cover no-repeat;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
   transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .about-visual:hover .about-visual-img { transform: scale(1.04); }
@@ -338,13 +339,14 @@ nav {
 }
 .portfolio-head {
   display: flex; align-items: flex-end; justify-content: space-between;
-  gap: 2rem; margin-bottom: 6rem;
+  gap: 2rem; max-width: 1400px; margin: 0 auto 4rem;
 }
 .portfolio-head .section-title { max-width: 540px; }
 
 .portfolio-grid {
   display: grid; grid-template-columns: repeat(6, 1fr);
   gap: 3rem 2rem;
+  max-width: 1400px; margin: 0 auto;
 }
 .project { grid-column: span 3; }
 .project.is-feature { grid-column: span 6; }
@@ -352,20 +354,29 @@ nav {
 .project.span-2 { grid-column: span 2; }
 .project.span-2 .project-img { aspect-ratio: 4 / 5; }
 
-.project-link { display: block; text-decoration: none; color: inherit; }
+.project-link { display: block; text-decoration: none; color: inherit; cursor: pointer; }
 .project-img {
   width: 100%; aspect-ratio: 4 / 5;
   background: var(--surface);
   overflow: hidden; position: relative;
-  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.project-img::before {
-  content: ''; position: absolute; inset: 0;
-  background: inherit;
-  filter: saturate(0.95);
+.project-img img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  filter: saturate(0.92);
   transition: filter 0.7s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.project-link:hover .project-img::before { filter: saturate(1.08); transform: scale(1.025); }
+.project-link:hover .project-img img { filter: saturate(1.08); transform: scale(1.025); }
+.project-count {
+  position: absolute; bottom: 1rem; right: 1rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  background: rgba(42, 33, 24, 0.62); color: rgba(242, 240, 237, 0.92);
+  padding: 0.28em 0.75em; backdrop-filter: blur(6px);
+  pointer-events: none;
+}
 
 .project-meta {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -385,16 +396,50 @@ nav {
   color: var(--text-muted); font-weight: 300; white-space: nowrap;
 }
 
-/* Project images — Unsplash placeholders, replace with real project photos later */
-.pp-1 { background: url('https://images.unsplash.com/photo-1598928387577-d49b6d399110?w=2000&q=80&auto=format&fit=crop') center / cover no-repeat; }
-.pp-2 { background: url('https://images.unsplash.com/photo-1643376452350-97eadd2c417f?w=1200&q=80&auto=format&fit=crop') center / cover no-repeat; }
-.pp-3 { background: url('https://images.unsplash.com/photo-1518733057094-95b53143d2a7?w=1200&q=80&auto=format&fit=crop') center / cover no-repeat; }
-.pp-4 { background: url('https://images.unsplash.com/photo-1638885930125-85350348d266?w=1200&q=80&auto=format&fit=crop') center / cover no-repeat; }
-.pp-5 { background: url('https://images.unsplash.com/photo-1585418694458-dc80a5c20294?w=1200&q=80&auto=format&fit=crop') center / cover no-repeat; }
-.pp-6 { background: url('https://images.unsplash.com/photo-1616611213095-58abb651f70c?w=1200&q=80&auto=format&fit=crop') center / cover no-repeat; }
-.pp-7 { background: url('https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1200&q=80&auto=format&fit=crop') center / cover no-repeat; }
-.pp-8 { background: url('https://images.unsplash.com/photo-1612965607446-25e1332775ae?w=1200&q=80&auto=format&fit=crop') center / cover no-repeat; }
-.pp-9 { background: url('https://images.unsplash.com/photo-1659720879214-62bfaf383b79?w=1200&q=80&auto=format&fit=crop') center / cover no-repeat; }
+/* ────────── LIGHTBOX ────────── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 900;
+  background: rgba(26, 20, 14, 0.96);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.lightbox.is-open { opacity: 1; pointer-events: all; }
+.lb-img-wrap {
+  max-width: 88vw; max-height: 82vh;
+  display: flex; align-items: center; justify-content: center;
+}
+.lb-img {
+  max-width: 88vw; max-height: 82vh;
+  object-fit: contain; display: block;
+  user-select: none;
+}
+.lb-close {
+  position: absolute; top: 1.5rem; right: 2rem;
+  background: none; border: none; cursor: pointer;
+  color: rgba(242, 240, 237, 0.7); font-size: 2rem; line-height: 1;
+  transition: color 0.2s; padding: 0.4rem;
+}
+.lb-close:hover { color: var(--bg); }
+.lb-prev, .lb-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer;
+  color: rgba(242, 240, 237, 0.55);
+  font-size: 2.6rem; line-height: 1; padding: 1rem;
+  transition: color 0.2s;
+}
+.lb-prev { left: 1rem; }
+.lb-next { right: 1rem; }
+.lb-prev:hover, .lb-next:hover { color: var(--bg); }
+.lb-bar {
+  position: absolute; bottom: 2rem; left: 0; right: 0;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(242, 240, 237, 0.5);
+  display: flex; justify-content: center; align-items: center; gap: 2rem;
+}
+.lb-project { color: rgba(242, 240, 237, 0.75); }
 
 .portfolio-foot { margin-top: 5rem; display: flex; justify-content: flex-end; }
 
@@ -404,36 +449,11 @@ nav {
   background: var(--bg);
   transition: background 0.6s ease;
 }
-.gallery-filter {
-  display: flex; flex-wrap: wrap; justify-content: center;
-  gap: 2.4rem; margin: 0 auto 5.5rem;
-  border-bottom: 1px solid var(--hairline);
-  padding-bottom: 2rem; max-width: 900px;
-}
-.filter-btn {
-  background: none; border: none; cursor: pointer;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--text-muted); font-weight: 300;
-  padding: 0.3rem 0; position: relative;
-  transition: color 0.3s;
-}
-.filter-btn::after {
-  content: ''; position: absolute; left: 0; right: 0; bottom: -0.4rem;
-  height: 1px; background: var(--accent);
-  transform: scaleX(0); transform-origin: center;
-  transition: transform 0.4s ease;
-}
-.filter-btn:hover { color: var(--text); }
-.filter-btn.is-active { color: var(--text); }
-.filter-btn.is-active::after { transform: scaleX(1); }
-
 .gallery-grid {
   display: grid; grid-template-columns: repeat(6, 1fr);
   gap: 3.5rem 2.5rem;
   max-width: 1400px; margin: 0 auto;
 }
-.project.is-hidden { display: none; }
 
 /* ────────── PHILOSOPHY ────────── */
 .philosophy {
@@ -904,7 +924,6 @@ footer p {
   .project.is-feature .project-img { aspect-ratio: 4 / 5; }
 
   .gallery { padding: 2rem 1.5rem 6rem; }
-  .gallery-filter { gap: 1.4rem; margin-bottom: 3.5rem; }
   .gallery-grid { gap: 2.5rem 1rem; }
   .project.span-2 { grid-column: span 6; }
 

@@ -38,9 +38,14 @@
   var navToggle = document.getElementById('navToggle');
   var navMobile = document.getElementById('navMobile');
   if (navToggle && navMobile) {
+    var backdrop = document.createElement('div');
+    backdrop.className = 'nav-backdrop';
+    document.body.appendChild(backdrop);
+
     function closeMobileNav() {
       navMobile.classList.remove('is-open');
       navToggle.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
       navToggle.setAttribute('aria-expanded', 'false');
       navMobile.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
@@ -50,6 +55,7 @@
       if (isOpen) { closeMobileNav(); return; }
       navMobile.classList.add('is-open');
       navToggle.classList.add('is-open');
+      backdrop.classList.add('is-open');
       navToggle.setAttribute('aria-expanded', 'true');
       navMobile.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -57,6 +63,7 @@
     navMobile.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', closeMobileNav);
     });
+    backdrop.addEventListener('click', closeMobileNav);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && navMobile.classList.contains('is-open')) closeMobileNav();
     });

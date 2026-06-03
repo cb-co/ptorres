@@ -964,7 +964,7 @@ footer p {
   .logo-text { font-size: 0.82rem; letter-spacing: 0.28em; }
   .logo-text-sub { font-size: 0.5rem; letter-spacing: 0.36em; }
 
-  .hero { padding: 90px 1.5rem 4rem; }
+  .hero { padding: 4rem 1.5rem; min-height: 100svh; }
   .hero-name { font-size: clamp(2.6rem, 11vw, 3.8rem); margin-bottom: 2rem; }
   .hero-tagline { margin-bottom: 2.6rem; }
   .hero-scroll-line { height: 30px; }

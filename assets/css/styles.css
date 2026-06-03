@@ -447,7 +447,9 @@ nav {
 .project-tag {
   font-size: 0.64rem; letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--text-muted); font-weight: 300; white-space: nowrap;
+  text-align: right;
 }
+.project-loc::before { content: ' · '; }
 
 /* ────────── LIGHTBOX ────────── */
 .lightbox {
@@ -981,8 +983,8 @@ footer p {
   .project-img { aspect-ratio: 4 / 5; }
   .project.is-feature .project-img { aspect-ratio: 4 / 5; }
 
-  .project-meta { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-  .project-tag { white-space: normal; }
+  .project-tag { display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem; white-space: normal; }
+  .project-loc::before { content: none; }
 
   .gallery { padding: 2rem 1.5rem 6rem; }
   .gallery-grid { gap: 2.5rem 1rem; }

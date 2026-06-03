@@ -203,6 +203,7 @@ nav {
   position: relative;
   display: flex; align-items: center; justify-content: center;
   padding: 110px 6vw 6rem;
+  margin-bottom: 5rem;
   background:
     linear-gradient(180deg, rgba(32, 22, 14, 0.38) 0%, rgba(32, 22, 14, 0.50) 55%, rgba(20, 14, 8, 0.65) 100%),
     url('../img/hero.jpg') center / cover no-repeat;
@@ -342,7 +343,7 @@ nav {
 
 /* ────────── ABOUT / NOSOTROS ────────── */
 .about {
-  padding: 10rem 6vw 6rem;
+  padding: 5rem 6vw 6rem;
   background: var(--bg);
   transition: background 0.6s ease;
 }
@@ -914,12 +915,12 @@ footer p {
   .nav-links { gap: 1.8rem; }
   .nav-links a { font-size: 0.66rem; }
 
-  .hero { padding: 100px 2.5rem 5rem; }
+  .hero { padding: 100px 2.5rem 5rem; margin-bottom: 2rem; }
   .hero-name { font-size: clamp(2.8rem, 8vw, 4.6rem); }
 
   .page-hero { padding: 12rem 2.5rem 4rem; }
 
-  .about { padding: 5rem 2.5rem 7rem; }
+  .about { padding: 3rem 2.5rem 7rem; }
   .about-grid { grid-template-columns: 1fr; gap: 3.5rem; max-width: 560px; }
   .about-visual { aspect-ratio: 4 / 5; max-width: 440px; margin: 0 auto; }
 
@@ -961,17 +962,17 @@ footer p {
   .nav-hamburger { display: flex; }
   .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); }
   .logo-mark { width: 34px; height: 34px; }
-  .logo-text { font-size: 0.82rem; letter-spacing: 0.28em; }
+  .logo-text { font-size: 0.82rem; letter-spacing: 0.28em; white-space: nowrap; }
   .logo-text-sub { font-size: 0.5rem; letter-spacing: 0.36em; }
 
-  .hero { padding: 4rem 1.5rem; min-height: 100svh; }
+  .hero { padding: 4rem 1.5rem; margin-bottom: 3rem; min-height: 100svh; }
   .hero-name { font-size: clamp(2.6rem, 11vw, 3.8rem); margin-bottom: 2rem; }
   .hero-tagline { margin-bottom: 2.6rem; }
   .hero-scroll-line { height: 30px; }
 
   .page-hero { padding: 7rem 1.5rem 3rem; }
 
-  .about { padding: 4.5rem 1.5rem; }
+  .about { padding: 1.5rem 1.5rem 4.5rem; }
   .about-grid { gap: 2.5rem; }
   .about-visual { max-width: none; }
   .section-head { margin-bottom: 4rem; }

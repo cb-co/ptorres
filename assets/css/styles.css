@@ -200,6 +200,7 @@ nav {
 /* ────────── HERO (home) ────────── */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   display: flex; align-items: center; justify-content: center;
   padding: 110px 6vw 6rem;
@@ -974,7 +975,7 @@ footer p {
 
   .about { padding: 4.5rem 1.5rem; }
   .about-grid { gap: 2.5rem; }
-  .about-visual { max-width: 340px; }
+  .about-visual { max-width: none; }
   .section-head { margin-bottom: 4rem; }
 
   .portfolio { padding: 4.5rem 1.5rem; }

@@ -981,6 +981,9 @@ footer p {
   .project-img { aspect-ratio: 4 / 5; }
   .project.is-feature .project-img { aspect-ratio: 4 / 5; }
 
+  .project-meta { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  .project-tag { white-space: normal; }
+
   .gallery { padding: 2rem 1.5rem 6rem; }
   .gallery-grid { gap: 2.5rem 1rem; }
   .project.span-2 { grid-column: span 6; }

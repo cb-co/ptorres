@@ -200,7 +200,6 @@ nav {
 /* ────────── HERO (home) ────────── */
 .hero {
   min-height: 100vh;
-  min-height: calc(var(--vh, 1vh) * 100);
   position: relative;
   display: flex; align-items: center; justify-content: center;
   padding: 110px 6vw 6rem;
@@ -916,7 +915,6 @@ footer p {
 
   .hero { padding: 100px 2.5rem 5rem; }
   .hero-name { font-size: clamp(2.8rem, 8vw, 4.6rem); }
-  .hero-scroll { display: none; }
 
   .page-hero { padding: 12rem 2.5rem 4rem; }
 
@@ -968,7 +966,6 @@ footer p {
   .hero { padding: 90px 1.5rem 4rem; }
   .hero-name { font-size: clamp(2.6rem, 11vw, 3.8rem); margin-bottom: 2rem; }
   .hero-tagline { margin-bottom: 2.6rem; }
-  .hero-scroll { display: flex; }
   .hero-scroll-line { height: 30px; }
 
   .page-hero { padding: 7rem 1.5rem 3rem; }

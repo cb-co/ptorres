@@ -1,13 +1,6 @@
 (function () {
   'use strict';
 
-  /* ── Real viewport height (fixes 100vh on iOS Safari) ── */
-  function setVh() {
-    document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
-  }
-  setVh();
-  window.addEventListener('resize', setVh);
-
   /* ── Theme: light is the default regardless of OS. Honor saved choice. ── */
   var html = document.documentElement;
   var saved = localStorage.getItem('tr-theme');

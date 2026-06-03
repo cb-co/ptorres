@@ -18,7 +18,7 @@
 // ---------------------------------------------------------------------------
 
 const TO_EMAIL = process.env.CONTACT_TO || 'info@trarq.com';
-const FROM_EMAIL = process.env.CONTACT_FROM || 'Torres Rodriguez <no-reply@trarq.com>';
+const FROM_EMAIL = process.env.CONTACT_FROM || 'Torres Rodriguez <onboarding@resend.dev>';
 
 function escapeHtml(value) {
   return String(value == null ? '' : value)

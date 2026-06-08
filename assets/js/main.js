@@ -243,4 +243,11 @@
         });
     });
   }
+  /* ── Behold Instagram widget ── */
+  if (document.querySelector('behold-widget')) {
+    var s = document.createElement('script');
+    s.type = 'module';
+    s.src = 'https://w.behold.so/widget.js';
+    document.head.appendChild(s);
+  }
 })();

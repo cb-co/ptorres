@@ -938,7 +938,7 @@ footer p {
   .gallery-grid { gap: 2.8rem 1.8rem; }
   .project.span-2 { grid-column: span 3; }
 
-  .philosophy { padding: 7rem 2.5rem; grid-template-columns: 1fr; gap: 4rem; }
+  .philosophy { padding: 7rem 4rem; grid-template-columns: 1fr; gap: 4rem; }
 
   .team { padding: 7rem 2.5rem; }
   .team-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem 2.5rem; }
@@ -962,7 +962,7 @@ footer p {
 
 /* ────────── RESPONSIVE: MOBILE (≤768px) ────────── */
 @media (max-width: 768px) {
-  nav { padding: 1.1rem 1.5rem; }
+  nav { padding: 1.1rem 1.75rem; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); }
@@ -970,21 +970,21 @@ footer p {
   .logo-text { font-size: 0.82rem; letter-spacing: 0.28em; white-space: nowrap; }
   .logo-text-sub { font-size: 0.5rem; letter-spacing: 0.36em; }
 
-  .hero { padding: 4rem 1.5rem; margin-bottom: 3rem; min-height: 100svh; }
+  .hero { padding: 4rem 1.75rem; margin-bottom: 7rem; min-height: 100svh; }
   .hero-name { font-size: clamp(2.6rem, 11vw, 3.8rem); margin-bottom: 2rem; }
   .hero-tagline { margin-bottom: 2.6rem; }
   .hero-scroll-line { height: 30px; }
 
-  .page-hero { padding: 7rem 1.5rem 3rem; }
+  .page-hero { padding: 8rem 1.75rem 3.5rem; }
 
-  .about { padding: 1.5rem 1.5rem 4.5rem; }
-  .about-grid { gap: 2.5rem; }
+  .about { padding: 2.5rem 1.75rem 5.5rem; }
+  .about-grid { gap: 3rem; }
   .about-visual { max-width: none; }
   .section-head { margin-bottom: 4rem; }
 
-  .portfolio { padding: 4.5rem 1.5rem; }
-  .portfolio-head { flex-direction: column; align-items: flex-start; gap: 1.2rem; margin-bottom: 3rem; }
-  .portfolio-grid { gap: 2.5rem 1rem; }
+  .portfolio { padding: 5.5rem 1.75rem; }
+  .portfolio-head { flex-direction: column; align-items: flex-start; gap: 1.2rem; margin-bottom: 3.5rem; }
+  .portfolio-grid { gap: 3rem 1rem; }
   .project, .project.is-feature { grid-column: span 6; }
   .project-img { aspect-ratio: 4 / 5; }
   .project.is-feature .project-img { aspect-ratio: 4 / 5; }
@@ -992,32 +992,32 @@ footer p {
   .project-tag { display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem; white-space: normal; }
   .project-loc::before { content: none; }
 
-  .gallery { padding: 2rem 1.5rem 6rem; }
-  .gallery-grid { gap: 2.5rem 1rem; }
+  .gallery { padding: 2.5rem 1.75rem 6.5rem; }
+  .gallery-grid { gap: 3rem 1rem; }
   .project.span-2 { grid-column: span 6; }
 
-  .philosophy { padding: 4.5rem 1.5rem; gap: 2.5rem; }
+  .philosophy { padding: 6rem 2.5rem; gap: 3rem; }
 
-  .team { padding: 4.5rem 1.5rem; }
-  .team-grid { grid-template-columns: 1fr; gap: 3rem; max-width: 360px; margin: 0 auto; }
+  .team { padding: 6rem 1.75rem; }
+  .team-grid { grid-template-columns: 1fr; gap: 3.5rem; max-width: 360px; margin: 0 auto; }
   .team-bio { max-width: none; }
 
-  .insta { padding: 4.5rem 1.5rem; }
-  .insta-row { gap: 2.5rem; }
+  .insta { padding: 6rem 1.75rem; }
+  .insta-row { gap: 3rem; }
 
-  .contact { padding: 4.5rem 1.5rem 3.5rem; }
+  .contact { padding: 6rem 1.75rem 5rem; }
   .contact-details { gap: 2.5rem; }
 
-  .contact-page { padding: 2rem 1.5rem 5rem; }
-  .contact-form-wrap { padding: 2rem 1.5rem; }
+  .contact-page { padding: 2.5rem 1.75rem 6rem; }
+  .contact-form-wrap { padding: 2.4rem 1.75rem; }
   .field-row { grid-template-columns: 1fr; gap: 0; }
 
-  .faq { padding: 5.5rem 1.5rem; }
+  .faq { padding: 6.5rem 1.75rem; }
   .faq-q { font-size: 1.18rem; }
 
-  .prose-section { padding: 2rem 1.5rem 5.5rem; }
+  .prose-section { padding: 2.5rem 1.75rem 6.5rem; }
 
-  footer { padding: 1.75rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+  footer { padding: 2rem 1.75rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
   .footer-links { flex-wrap: wrap; gap: 1.4rem; }
 }
 

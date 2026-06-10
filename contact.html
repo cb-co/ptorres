@@ -146,15 +146,24 @@
             <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 (809) 000-0000">
           </div>
           <div class="field">
-            <label for="project">Tipo de proyecto</label>
-            <select id="project" name="project">
-              <option value="">Selecciona una opción</option>
-              <option value="Residencial">Residencial</option>
-              <option value="Interiores">Diseño de interiores</option>
-              <option value="Comercial">Comercial</option>
-              <option value="Hospitalidad">Hospitalidad</option>
-              <option value="Otro">Otro</option>
-            </select>
+            <label id="project-label">Tipo de proyecto</label>
+            <input type="hidden" name="project" id="project">
+            <div class="cs" role="combobox" aria-labelledby="project-label" aria-haspopup="listbox" aria-expanded="false">
+              <button type="button" class="cs-trigger">
+                <span class="cs-val is-placeholder">Selecciona una opción</span>
+                <svg class="cs-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <ul class="cs-panel" role="listbox" aria-labelledby="project-label">
+                <li class="cs-group" aria-disabled="true">Diseño</li>
+                <li class="cs-opt" role="option" data-value="Residencial">Residencial</li>
+                <li class="cs-opt" role="option" data-value="Comercial">Comercial</li>
+                <li class="cs-opt" role="option" data-value="Hospitalario">Hospitalario</li>
+                <li class="cs-group" aria-disabled="true">Alcance</li>
+                <li class="cs-opt" role="option" data-value="Diseño">Diseño</li>
+                <li class="cs-opt" role="option" data-value="Ejecución">Ejecución</li>
+                <li class="cs-opt" role="option" data-value="Ambos">Ambos</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="field">

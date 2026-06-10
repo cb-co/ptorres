@@ -243,6 +243,71 @@
         });
     });
   }
+  /* ── Custom select ── */
+  document.querySelectorAll('.cs').forEach(function (cs) {
+    var trigger = cs.querySelector('.cs-trigger');
+    var val = cs.querySelector('.cs-val');
+    var panel = cs.querySelector('.cs-panel');
+    var opts = cs.querySelectorAll('.cs-opt');
+    var hidden = cs.previousElementSibling; // the hidden input
+    var focusIdx = -1;
+
+    function open() {
+      cs.setAttribute('aria-expanded', 'true');
+      focusIdx = Array.from(opts).findIndex(function (o) { return o.classList.contains('is-selected'); });
+      if (focusIdx >= 0) setFocus(focusIdx);
+    }
+    function close() {
+      cs.setAttribute('aria-expanded', 'false');
+      opts.forEach(function (o) { o.classList.remove('is-focused'); });
+      trigger.focus();
+    }
+    function select(opt) {
+      opts.forEach(function (o) { o.classList.remove('is-selected'); });
+      opt.classList.add('is-selected');
+      val.textContent = opt.textContent;
+      val.classList.remove('is-placeholder');
+      if (hidden) hidden.value = opt.dataset.value;
+      close();
+    }
+    function setFocus(idx) {
+      opts.forEach(function (o) { o.classList.remove('is-focused'); });
+      focusIdx = Math.max(0, Math.min(idx, opts.length - 1));
+      opts[focusIdx].classList.add('is-focused');
+      opts[focusIdx].scrollIntoView({ block: 'nearest' });
+    }
+
+    trigger.addEventListener('click', function () {
+      var isOpen = cs.getAttribute('aria-expanded') === 'true';
+      isOpen ? close() : open();
+    });
+    opts.forEach(function (opt, i) {
+      opt.addEventListener('click', function () { select(opt); });
+      opt.addEventListener('mouseenter', function () { setFocus(i); });
+    });
+    trigger.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+        e.preventDefault(); open();
+      }
+    });
+    cs.addEventListener('keydown', function (e) {
+      var isOpen = cs.getAttribute('aria-expanded') === 'true';
+      if (!isOpen) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); setFocus(focusIdx + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setFocus(focusIdx - 1); }
+      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (focusIdx >= 0) select(opts[focusIdx]); }
+      else if (e.key === 'Escape' || e.key === 'Tab') { close(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (!cs.contains(e.target)) close();
+    });
+    cs.closest('form') && cs.closest('form').addEventListener('reset', function () {
+      opts.forEach(function (o) { o.classList.remove('is-selected'); });
+      val.textContent = 'Selecciona una opción';
+      val.classList.add('is-placeholder');
+    });
+  });
+
   /* ── Behold Instagram widget ── */
   if (document.querySelector('behold-widget')) {
     var s = document.createElement('script');

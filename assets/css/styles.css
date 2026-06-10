@@ -583,6 +583,11 @@ nav {
   font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
   color: var(--accent-mid); font-weight: 300; margin-bottom: 1rem;
 }
+.team-bio-lede {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 300; line-height: 1.38;
+  color: var(--text); margin-bottom: 0.9rem;
+}
 .team-bio {
   font-size: 0.92rem; line-height: 1.8; color: var(--text-soft);
   font-weight: 300; max-width: 340px;
@@ -774,6 +779,65 @@ behold-widget {
 }
 .field textarea { resize: vertical; min-height: 90px; line-height: 1.7; }
 .field select { cursor: pointer; }
+
+/* ────────── CUSTOM SELECT ────────── */
+.cs {
+  position: relative;
+}
+.cs-trigger {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--hairline-2);
+  padding: 0.6rem 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.98rem; font-weight: 300;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.4s ease;
+}
+.cs-trigger:focus { outline: none; border-bottom-color: var(--accent); }
+.cs[aria-expanded="true"] .cs-trigger { border-bottom-color: var(--accent); }
+.cs-val { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.cs-val.is-placeholder { color: var(--text-muted); opacity: 0.55; }
+.cs-arrow {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.cs[aria-expanded="true"] .cs-arrow { transform: rotate(180deg); color: var(--accent); }
+.cs-panel {
+  position: absolute; top: calc(100% + 2px); left: 0; right: 0; z-index: 200;
+  background: var(--bg-2);
+  border: 1px solid var(--hairline-2);
+  list-style: none; margin: 0; padding: 0.4rem 0;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, background 0.6s ease;
+}
+.cs[aria-expanded="true"] .cs-panel {
+  opacity: 1; visibility: visible; transform: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
+}
+.cs-group {
+  padding: 0.7rem 1rem 0.3rem;
+  font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--accent-mid); font-weight: 400; font-family: 'Jost', sans-serif;
+  pointer-events: none;
+}
+.cs-group + .cs-group { margin-top: 0.4rem; border-top: 1px solid var(--hairline); padding-top: 0.9rem; }
+.cs-opt {
+  padding: 0.55rem 1rem 0.55rem 1.5rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.92rem; font-weight: 300;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.cs-opt:hover, .cs-opt.is-focused { background: var(--bg-3); color: var(--text); }
+.cs-opt.is-selected { color: var(--accent); }
+.cs-opt.is-selected::before { content: '—'; margin-right: 0.5rem; color: var(--accent-mid); font-size: 0.7rem; }
 .field input::placeholder,
 .field textarea::placeholder { color: var(--text-muted); opacity: 0.55; }
 .field input:focus,

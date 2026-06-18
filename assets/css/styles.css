@@ -860,6 +860,13 @@ behold-widget {
 .btn-submit:active { transform: translateY(1px); }
 .btn-submit:disabled { opacity: 0.55; cursor: default; letter-spacing: 0.28em; }
 
+.field.has-error input,
+.field.has-error textarea { border-bottom-color: #B4543E; }
+.field-error {
+  font-size: 0.68rem; letter-spacing: 0.06em;
+  color: #B4543E; margin-top: 0.45rem; font-weight: 300;
+}
+
 .form-status {
   margin-top: 1.6rem; font-size: 0.9rem; line-height: 1.6;
   font-weight: 300; min-height: 1.2em;

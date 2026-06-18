@@ -203,13 +203,66 @@
     });
   });
 
-  /* ── Contact form: POST to /api/contact, graceful UX ── */
+  /* ── Contact form: validation + POST to Web3Forms ── */
   var form = document.getElementById('contactForm');
   if (form) {
     var status = form.querySelector('.form-status');
     var submitBtn = form.querySelector('.btn-submit');
+
+    function clearFieldError(input) {
+      var field = input.closest('.field');
+      if (!field) return;
+      field.classList.remove('has-error');
+      var err = field.querySelector('.field-error');
+      if (err) err.remove();
+    }
+
+    function showFieldError(input, msg) {
+      var field = input.closest('.field');
+      if (!field) return;
+      field.classList.add('has-error');
+      if (!field.querySelector('.field-error')) {
+        var err = document.createElement('p');
+        err.className = 'field-error';
+        err.textContent = msg;
+        field.appendChild(err);
+      }
+    }
+
+    function validateForm() {
+      var valid = true;
+      var nameEl    = form.querySelector('#name');
+      var emailEl   = form.querySelector('#email');
+      var messageEl = form.querySelector('#message');
+
+      clearFieldError(nameEl); clearFieldError(emailEl); clearFieldError(messageEl);
+
+      if (!nameEl.value.trim()) {
+        showFieldError(nameEl, 'El nombre es obligatorio.');
+        valid = false;
+      }
+      if (!emailEl.value.trim()) {
+        showFieldError(emailEl, 'El correo es obligatorio.');
+        valid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+        showFieldError(emailEl, 'Introduce un correo válido.');
+        valid = false;
+      }
+      if (!messageEl.value.trim()) {
+        showFieldError(messageEl, 'El mensaje es obligatorio.');
+        valid = false;
+      }
+      return valid;
+    }
+
+    ['#name', '#email', '#message'].forEach(function (sel) {
+      var el = form.querySelector(sel);
+      if (el) el.addEventListener('input', function () { clearFieldError(el); });
+    });
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (!validateForm()) return;
       if (status) { status.textContent = ''; status.className = 'form-status'; }
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Enviando…'; }
 

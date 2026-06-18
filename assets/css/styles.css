@@ -206,14 +206,14 @@ nav {
   margin-bottom: 5rem;
   background:
     linear-gradient(180deg, rgba(32, 22, 14, 0.42) 0%, rgba(32, 22, 14, 0.52) 55%, rgba(20, 14, 8, 0.68) 100%),
-    url('https://images.unsplash.com/photo-1721630175454-0ca4517bb530?w=1920&q=75&auto=format&fit=crop') center / cover no-repeat;
+    url('../img/hero.jpg') center / cover no-repeat;
   text-align: center;
   overflow: hidden;
 }
 [data-theme="dark"] .hero {
   background:
     linear-gradient(180deg, rgba(15, 10, 5, 0.60) 0%, rgba(15, 10, 5, 0.68) 55%, rgba(10, 7, 4, 0.78) 100%),
-    url('https://images.unsplash.com/photo-1721630175454-0ca4517bb530?w=1920&q=75&auto=format&fit=crop') center / cover no-repeat;
+    url('../img/hero.jpg') center / cover no-repeat;
 }
 
 .hero-content {

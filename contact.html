@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
-<link rel="canonical" href="https://ptorres.vercel.app/contact.html">
+<link rel="canonical" href="https://trarq.com/contact.html">
 <meta name="author" content="Torres Rodriguez Arquitectos">
 <meta name="theme-color" content="#F2F0ED" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1E1812" media="(prefers-color-scheme: dark)">
@@ -23,8 +23,8 @@
 <meta property="og:locale" content="es_DO">
 <meta property="og:title" content="Contacto — Torres Rodriguez Arquitectos | Arquitectos en Santo Domingo Este">
 <meta property="og:description" content="Contacta a Torres Rodriguez Arquitectos. Estudio de arquitectura, interiorismo y remodelación en Santo Domingo Este. Teléfono +1 (829) 637-7225.">
-<meta property="og:url" content="https://ptorres.vercel.app/contact.html">
-<meta property="og:image" content="https://ptorres.vercel.app/assets/img/og-image.png">
+<meta property="og:url" content="https://trarq.com/contact.html">
+<meta property="og:image" content="https://trarq.com/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Torres Rodriguez Arquitectos — Arquitectura & Diseño Interior">
@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contacto — Torres Rodriguez Arquitectos | Arquitectos en Santo Domingo Este">
 <meta name="twitter:description" content="Contacta a Torres Rodriguez Arquitectos. Estudio de arquitectura, interiorismo y remodelación en Santo Domingo Este. Teléfono +1 (829) 637-7225.">
-<meta name="twitter:image" content="https://ptorres.vercel.app/assets/img/og-image.png">
+<meta name="twitter:image" content="https://trarq.com/assets/img/og-image.png">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -125,11 +125,13 @@
       <h2 class="contact-form-title">Escríbenos</h2>
       <p class="contact-form-note">Los campos marcados con · son obligatorios.</p>
       <!--
-        On submit, main.js POSTs JSON to /api/contact (Vercel serverless fn).
-        api/contact.js forwards to Web3Forms. Set WEB3FORMS_ACCESS_KEY (and optionally
-        WEB3FORMS_FROM_NAME) in Vercel → Project → Settings → Environment Variables.
+        On submit, main.js POSTs JSON directly to Web3Forms from the browser.
+        Web3Forms access keys are public by design — get one at web3forms.com
+        (free, tied to info@trarq.com) and replace YOUR_WEB3FORMS_ACCESS_KEY below.
       -->
-      <form id="contactForm" action="/api/contact" method="post" novalidate>
+      <form id="contactForm" action="https://api.web3forms.com/submit" method="post" novalidate>
+        <input type="hidden" name="access_key" value="7ac533f9-ebd3-4228-a770-25a64ee5b23e">
+        <input type="hidden" name="from_name" value="Torres Rodriguez Web">
         <div class="field-row">
           <div class="field">
             <label for="name">Nombre ·</label>

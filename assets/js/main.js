@@ -215,21 +215,21 @@
 
       var data = Object.fromEntries(new FormData(form).entries());
 
-      fetch(form.action || '/api/contact', {
+      fetch(form.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(data)
       })
-        .then(function (res) { return res.json().then(function (body) { return { ok: res.ok, body: body }; }); })
+        .then(function (res) { return res.json(); })
         .then(function (r) {
-          if (r.ok) {
+          if (r.success) {
             form.reset();
             if (status) {
               status.textContent = 'Gracias. Hemos recibido tu mensaje y te responderemos pronto.';
               status.classList.add('is-success');
             }
           } else {
-            throw new Error((r.body && r.body.error) || 'Error');
+            throw new Error(r.message || 'Error');
           }
         })
         .catch(function () {

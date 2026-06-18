@@ -86,10 +86,10 @@
         'assets/img/projects/merlot/10-bedroom-sheer.jpg'
       ],
       merlot25: [
+        'assets/img/projects/merlot25/04-panoramic.jpg',
         'assets/img/projects/merlot25/01-foyer.jpg',
         'assets/img/projects/merlot25/02-sconce.jpg',
         'assets/img/projects/merlot25/03-salon.jpg',
-        'assets/img/projects/merlot25/04-panoramic.jpg',
         'assets/img/projects/merlot25/05-dining.jpg',
         'assets/img/projects/merlot25/06-dining-detail.jpg',
         'assets/img/projects/merlot25/07-bedroom.jpg',

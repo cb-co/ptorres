@@ -125,9 +125,9 @@
       <h2 class="contact-form-title">Escríbenos</h2>
       <p class="contact-form-note">Los campos marcados con · son obligatorios.</p>
       <!--
-        On submit, main.js POSTs JSON to the form action (/api/contact).
-        The serverless function at api/contact.js sends a templated email
-        to info@trarq.com. Configure RESEND_API_KEY (or your provider) to go live.
+        On submit, main.js POSTs JSON to /api/contact (Vercel serverless fn).
+        api/contact.js forwards to Web3Forms. Set WEB3FORMS_ACCESS_KEY (and optionally
+        WEB3FORMS_FROM_NAME) in Vercel → Project → Settings → Environment Variables.
       -->
       <form id="contactForm" action="/api/contact" method="post" novalidate>
         <div class="field-row">

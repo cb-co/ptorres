@@ -257,10 +257,10 @@
       focusIdx = Array.from(opts).findIndex(function (o) { return o.classList.contains('is-selected'); });
       if (focusIdx >= 0) setFocus(focusIdx);
     }
-    function close() {
+    function close(restoreFocus) {
       cs.setAttribute('aria-expanded', 'false');
       opts.forEach(function (o) { o.classList.remove('is-focused'); });
-      trigger.focus();
+      if (restoreFocus !== false) trigger.focus();
     }
     function select(opt) {
       opts.forEach(function (o) { o.classList.remove('is-selected'); });
@@ -299,7 +299,7 @@
       else if (e.key === 'Escape' || e.key === 'Tab') { close(); }
     });
     document.addEventListener('click', function (e) {
-      if (!cs.contains(e.target)) close();
+      if (!cs.contains(e.target)) close(false);
     });
     cs.closest('form') && cs.closest('form').addEventListener('reset', function () {
       opts.forEach(function (o) { o.classList.remove('is-selected'); });

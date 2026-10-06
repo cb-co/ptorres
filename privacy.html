@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Apply saved dark theme before first paint (avoids a light flash) -->
+<script>try{if(localStorage.getItem('tr-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -42,6 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3QBFN9B"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<a class="skip-link" href="#main">Saltar al contenido</a>
 
 <nav>
   <button class="nav-hamburger" id="navToggle" aria-label="Abrir menú" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
@@ -76,7 +79,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </button>
   </div>
 </nav>
-<div class="nav-mobile" id="navMobile" aria-hidden="true">
+<div class="nav-mobile" id="navMobile" inert>
   <ul class="nav-mobile-links">
     <li><a href="about.html">Nosotros</a></li>
     <li><a href="gallery.html">Proyectos</a></li>
@@ -84,6 +87,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </ul>
 </div>
 
+<main id="main" tabindex="-1">
 <header class="page-hero">
   <div class="page-hero-inner">
     <span class="section-index">Legal</span>
@@ -149,6 +153,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </p>
   </div>
 </section>
+
+</main>
 
 <footer>
   <p>© 2026 Torres Rodriguez Arquitectos · Santo Domingo</p>

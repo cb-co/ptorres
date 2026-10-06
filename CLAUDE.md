@@ -4,13 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A multi-page marketing site for **Torres Rodriguez Arquitectos** (Santo Domingo, DR), live at **https://www.trarq.com** (the apex `trarq.com` 308-redirects to `www`, so every canonical / OG / sitemap URL uses `www`). Copy is entirely in Spanish. Five static HTML pages share one stylesheet and one script. No build step, no framework, no server code. Hosted on Vercel as a static site.
+A multi-page marketing site for **Torres Rodriguez Arquitectos** (Santo Domingo, DR), live at **https://trarq.com** (the apex is the primary domain in Vercel; `www` redirects to it, so every canonical / OG / sitemap URL uses the apex). Copy is entirely in Spanish. Five static HTML pages share one stylesheet and one script. No build step, no framework, no server code. Hosted on Vercel as a static site.
 
 External services:
 - **Google Fonts** — `Cormorant Garamond`, `Jost`
 - **Google Tag Manager** — `GTM-M3QBFN9B`, snippet in every page's `<head>` + `<noscript>` after `<body>`
 - **Web3Forms** — contact form posts straight from the browser
 - **Behold.so** — Instagram feed widget on the home page
+
+### Hosting & DNS (production — be careful)
+DNS is **not** on Vercel. Nameservers are the client's cPanel host (`ns1/ns2.monkey.com.do`), and the zone is edited in cPanel → Zone Editor. Only two records point at Vercel: the apex `A` record and the `www` CNAME. **Email (MX → `mail.trarq.com`), webmail, SPF, DKIM and DMARC all live on the cPanel server.** Never move the nameservers to Vercel or "reset" the cPanel zone; that would take down the client's email or the website.
 
 ## File layout
 
@@ -128,5 +131,5 @@ Add `reveal` to any element (optionally `reveal-d1`/`-d2`/`-d3` for stagger). An
 - Styles live ONLY in `styles.css`; behavior ONLY in `main.js`. No inline `style=""` or `<script>` blocks — except the GTM snippets and the head theme snippet described above.
 - `<nav>`, mobile drawer and `<footer>` are duplicated per page — change all five together.
 - Animations: `.reveal` + `.reveal-dN` only.
-- Absolute URLs (canonical, `og:*`, JSON-LD, sitemap) use `https://www.trarq.com/`.
+- Absolute URLs (canonical, `og:*`, JSON-LD, sitemap) use `https://trarq.com/` (no `www`).
 - Images go under `assets/img/`, referenced with relative paths (no leading slash), JPEG + WebP.

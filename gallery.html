@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Apply saved dark theme before first paint (avoids a light flash) -->
+<script>try{if(localStorage.getItem('tr-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -20,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
-<link rel="canonical" href="https://trarq.com/gallery.html">
+<link rel="canonical" href="https://www.trarq.com/gallery.html">
 <meta name="author" content="Torres Rodriguez Arquitectos">
 <meta name="theme-color" content="#F2F0ED" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1E1812" media="(prefers-color-scheme: dark)">
@@ -30,8 +32,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="es_DO">
 <meta property="og:title" content="Proyectos — Torres Rodriguez Arquitectos | Residencial, Comercial, Hospitalidad en Santo Domingo">
 <meta property="og:description" content="Obra seleccionada: residencias, interiores, espacios comerciales y de hospitalidad diseñados por Torres Rodriguez Arquitectos en Santo Domingo y la República Dominicana.">
-<meta property="og:url" content="https://trarq.com/gallery.html">
-<meta property="og:image" content="https://trarq.com/assets/img/og-image.png">
+<meta property="og:url" content="https://www.trarq.com/gallery.html">
+<meta property="og:image" content="https://www.trarq.com/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Torres Rodriguez Arquitectos — Arquitectura & Diseño Interior">
@@ -39,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Proyectos — Torres Rodriguez Arquitectos | Residencial, Comercial, Hospitalidad en Santo Domingo">
 <meta name="twitter:description" content="Obra seleccionada: residencias, interiores, espacios comerciales y de hospitalidad diseñados por Torres Rodriguez Arquitectos en Santo Domingo y la República Dominicana.">
-<meta name="twitter:image" content="https://trarq.com/assets/img/og-image.png">
+<meta name="twitter:image" content="https://www.trarq.com/assets/img/og-image.png">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -47,6 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3QBFN9B"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<a class="skip-link" href="#main">Saltar al contenido</a>
 
 <nav>
   <button class="nav-hamburger" id="navToggle" aria-label="Abrir menú" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
@@ -81,7 +84,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </button>
   </div>
 </nav>
-<div class="nav-mobile" id="navMobile" aria-hidden="true">
+<div class="nav-mobile" id="navMobile" inert>
   <ul class="nav-mobile-links">
     <li><a href="about.html">Nosotros</a></li>
     <li><a href="gallery.html" class="is-active">Proyectos</a></li>
@@ -89,26 +92,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </ul>
 </div>
 
+<main id="main" tabindex="-1">
 <header class="page-hero">
   <div class="page-hero-inner">
     <span class="section-index">Proyectos</span>
     <h1 class="page-hero-title">Obra <em>seleccionada</em>.</h1>
     <p class="page-hero-sub">
-      Una década de residencias, interiores y espacios comerciales — cada uno
-      concebido como un todo, desde la estructura hasta el último detalle.
+      Desde 2018, residencias e interiores — cada uno concebido como un todo,
+      desde la estructura hasta el último detalle.
     </p>
   </div>
 </header>
 
 <section class="gallery">
   <!-- Featured: Gran Merlot 2024 — above the filter -->
-  <div class="portfolio-grid" style="margin-bottom:4rem;">
+  <div class="portfolio-grid gallery-feature">
     <article class="project is-feature reveal" data-category="residencial" data-project="merlot">
       <div class="project-link" role="button" tabindex="0" aria-label="Ver galería: Gran Merlot 2024">
         <div class="project-img">
-          <img src="assets/img/projects/merlot/01-salon.jpg"
+          <picture>
+            <source type="image/webp" srcset="assets/img/projects/merlot/01-salon.webp">
+            <img src="assets/img/projects/merlot/01-salon.jpg"
                alt="Gran Merlot — sala principal, Santo Domingo"
-               loading="eager" width="1600" height="1066">
+               loading="eager" fetchpriority="high" width="1600" height="1066">
+          </picture>
           <span class="project-count" aria-hidden="true">10 fotos</span>
         </div>
         <div class="project-meta">
@@ -125,9 +132,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <article class="project reveal" data-category="residencial" data-project="costambar">
       <div class="project-link" role="button" tabindex="0" aria-label="Ver galería: Villa Costambar">
         <div class="project-img">
-          <img src="assets/img/projects/costambar/01-living.jpg"
+          <picture>
+            <source type="image/webp" srcset="assets/img/projects/costambar/01-living.webp">
+            <img src="assets/img/projects/costambar/01-living.jpg"
                alt="Villa Costambar — sala de estar, Puerto Plata"
                loading="lazy" width="1600" height="1066">
+          </picture>
           <span class="project-count" aria-hidden="true">10 fotos</span>
         </div>
         <div class="project-meta">
@@ -141,9 +151,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <article class="project reveal reveal-d1" data-category="residencial" data-project="merlot25">
       <div class="project-link" role="button" tabindex="0" aria-label="Ver galería: Gran Merlot 2025">
         <div class="project-img">
-          <img src="assets/img/projects/merlot25/04-panoramic.jpg"
-               alt="Gran Merlot — foyer, Santo Domingo"
-               loading="lazy" width="1280" height="1600">
+          <picture>
+            <source type="image/webp" srcset="assets/img/projects/merlot25/04-panoramic.webp">
+            <img src="assets/img/projects/merlot25/04-panoramic.jpg"
+               alt="Gran Merlot — vista panorámica, Santo Domingo"
+               loading="lazy" width="1600" height="1066">
+          </picture>
           <span class="project-count" aria-hidden="true">10 fotos</span>
         </div>
         <div class="project-meta">
@@ -156,7 +169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- Lightbox -->
-<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Galería de imágenes">
+<div class="lightbox" id="lightbox" inert role="dialog" aria-modal="true" aria-label="Galería de imágenes">
   <button class="lb-close" id="lbClose" aria-label="Cerrar galería">&#215;</button>
   <button class="lb-prev" id="lbPrev" aria-label="Foto anterior">&#8249;</button>
   <button class="lb-next" id="lbNext" aria-label="Foto siguiente">&#8250;</button>
@@ -178,6 +191,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </p>
   <a href="contact.html" class="link-underline reveal reveal-d2">Escríbenos</a>
 </section>
+
+</main>
 
 <footer>
   <p>© 2026 Torres Rodriguez Arquitectos · Santo Domingo</p>

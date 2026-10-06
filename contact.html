@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Apply saved dark theme before first paint (avoids a light flash) -->
+<script>try{if(localStorage.getItem('tr-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -20,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
-<link rel="canonical" href="https://trarq.com/contact.html">
+<link rel="canonical" href="https://www.trarq.com/contact.html">
 <meta name="author" content="Torres Rodriguez Arquitectos">
 <meta name="theme-color" content="#F2F0ED" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1E1812" media="(prefers-color-scheme: dark)">
@@ -30,8 +32,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="es_DO">
 <meta property="og:title" content="Contacto — Torres Rodriguez Arquitectos | Arquitectos en Santo Domingo Este">
 <meta property="og:description" content="Contacta a Torres Rodriguez Arquitectos. Estudio de arquitectura, interiorismo y remodelación en Santo Domingo Este. Teléfono +1 (829) 637-7225.">
-<meta property="og:url" content="https://trarq.com/contact.html">
-<meta property="og:image" content="https://trarq.com/assets/img/og-image.png">
+<meta property="og:url" content="https://www.trarq.com/contact.html">
+<meta property="og:image" content="https://www.trarq.com/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Torres Rodriguez Arquitectos — Arquitectura & Diseño Interior">
@@ -39,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contacto — Torres Rodriguez Arquitectos | Arquitectos en Santo Domingo Este">
 <meta name="twitter:description" content="Contacta a Torres Rodriguez Arquitectos. Estudio de arquitectura, interiorismo y remodelación en Santo Domingo Este. Teléfono +1 (829) 637-7225.">
-<meta name="twitter:image" content="https://trarq.com/assets/img/og-image.png">
+<meta name="twitter:image" content="https://www.trarq.com/assets/img/og-image.png">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -47,6 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3QBFN9B"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<a class="skip-link" href="#main">Saltar al contenido</a>
 
 <nav>
   <button class="nav-hamburger" id="navToggle" aria-label="Abrir menú" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
@@ -81,7 +84,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </button>
   </div>
 </nav>
-<div class="nav-mobile" id="navMobile" aria-hidden="true">
+<div class="nav-mobile" id="navMobile" inert>
   <ul class="nav-mobile-links">
     <li><a href="about.html">Nosotros</a></li>
     <li><a href="gallery.html">Proyectos</a></li>
@@ -89,6 +92,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </ul>
 </div>
 
+<main id="main" tabindex="-1">
 <header class="page-hero">
   <div class="page-hero-inner">
     <span class="section-index">Contacto</span>
@@ -137,12 +141,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="contact-form-note">Los campos marcados con · son obligatorios.</p>
       <!--
         On submit, main.js POSTs JSON directly to Web3Forms from the browser.
-        Web3Forms access keys are public by design — get one at web3forms.com
-        (free, tied to info@trarq.com) and replace YOUR_WEB3FORMS_ACCESS_KEY below.
+        The access key below is public by design (tied to info@trarq.com in the
+        Web3Forms dashboard). "botcheck" is Web3Forms' honeypot: humans never see
+        it, and submissions with it ticked are rejected as spam.
       -->
       <form id="contactForm" action="https://api.web3forms.com/submit" method="post" novalidate>
         <input type="hidden" name="access_key" value="7ac533f9-ebd3-4228-a770-25a64ee5b23e">
         <input type="hidden" name="from_name" value="Torres Rodriguez Web">
+        <input type="hidden" name="subject" value="Nuevo mensaje desde trarq.com">
+        <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="field-row">
           <div class="field">
             <label for="name">Nombre ·</label>
@@ -161,17 +168,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="field">
             <label id="project-label">Tipo de proyecto</label>
             <input type="hidden" name="project" id="project">
-            <div class="cs" role="combobox" aria-labelledby="project-label" aria-haspopup="listbox" aria-expanded="false">
-              <button type="button" class="cs-trigger">
+            <div class="cs">
+              <button type="button" class="cs-trigger" id="project-trigger" role="combobox"
+                      aria-labelledby="project-label" aria-haspopup="listbox"
+                      aria-expanded="false" aria-controls="project-listbox">
                 <span class="cs-val is-placeholder">Selecciona una opción</span>
                 <svg class="cs-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
-              <ul class="cs-panel" role="listbox" aria-labelledby="project-label">
-                <li class="cs-group" aria-disabled="true">Diseño</li>
+              <ul class="cs-panel" id="project-listbox" role="listbox" aria-labelledby="project-label">
+                <li class="cs-group" role="presentation">Diseño</li>
                 <li class="cs-opt" role="option" data-value="Residencial">Residencial</li>
                 <li class="cs-opt" role="option" data-value="Comercial">Comercial</li>
                 <li class="cs-opt" role="option" data-value="Hospitalario">Hospitalario</li>
-                <li class="cs-group" aria-disabled="true">Alcance</li>
+                <li class="cs-group" role="presentation">Alcance</li>
                 <li class="cs-opt" role="option" data-value="Diseño">Diseño</li>
                 <li class="cs-opt" role="option" data-value="Ejecución">Ejecución</li>
                 <li class="cs-opt" role="option" data-value="Ambos">Ambos</li>
@@ -263,6 +272,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <p>© 2026 Torres Rodriguez Arquitectos · Santo Domingo</p>

@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Apply saved dark theme before first paint (avoids a light flash) -->
+<script>try{if(localStorage.getItem('tr-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -20,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
-<link rel="canonical" href="https://trarq.com/about.html">
+<link rel="canonical" href="https://www.trarq.com/about.html">
 <meta name="author" content="Torres Rodriguez Arquitectos">
 <meta name="theme-color" content="#F2F0ED" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1E1812" media="(prefers-color-scheme: dark)">
@@ -30,8 +32,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="es_DO">
 <meta property="og:title" content="Nosotros — Torres Rodriguez Arquitectos | Estudio de Arquitectura e Interiorismo en Santo Domingo">
 <meta property="og:description" content="Conoce a Torres Rodriguez Arquitectos: estudio de arquitectura, interiorismo y remodelación de servicio completo en Santo Domingo, fundado en 2018.">
-<meta property="og:url" content="https://trarq.com/about.html">
-<meta property="og:image" content="https://trarq.com/assets/img/og-image.png">
+<meta property="og:url" content="https://www.trarq.com/about.html">
+<meta property="og:image" content="https://www.trarq.com/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Torres Rodriguez Arquitectos — Arquitectura & Diseño Interior">
@@ -39,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nosotros — Torres Rodriguez Arquitectos | Estudio de Arquitectura e Interiorismo en Santo Domingo">
 <meta name="twitter:description" content="Conoce a Torres Rodriguez Arquitectos: estudio de arquitectura, interiorismo y remodelación de servicio completo en Santo Domingo, fundado en 2018.">
-<meta name="twitter:image" content="https://trarq.com/assets/img/og-image.png">
+<meta name="twitter:image" content="https://www.trarq.com/assets/img/og-image.png">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -47,6 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3QBFN9B"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<a class="skip-link" href="#main">Saltar al contenido</a>
 
 <nav>
   <button class="nav-hamburger" id="navToggle" aria-label="Abrir menú" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
@@ -81,7 +84,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </button>
   </div>
 </nav>
-<div class="nav-mobile" id="navMobile" aria-hidden="true">
+<div class="nav-mobile" id="navMobile" inert>
   <ul class="nav-mobile-links">
     <li><a href="about.html" class="is-active">Nosotros</a></li>
     <li><a href="gallery.html">Proyectos</a></li>
@@ -89,6 +92,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </ul>
 </div>
 
+<main id="main" tabindex="-1">
 <header class="page-hero">
   <div class="page-hero-inner">
     <span class="section-index">Nosotros</span>
@@ -103,9 +107,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="about">
   <div class="about-grid">
     <div class="about-visual reveal">
-      <img class="about-visual-img" src="assets/img/projects/merlot/02-foyer.jpg"
+      <picture>
+        <source type="image/webp" srcset="assets/img/projects/merlot/02-foyer.webp">
+        <img class="about-visual-img" src="assets/img/projects/merlot/02-foyer.jpg"
            alt="Proyecto Gran Merlot — foyer, Torres Rodriguez Arquitectos"
            loading="lazy" width="1066" height="1600">
+      </picture>
     </div>
     <div class="about-text reveal reveal-d1">
       <span class="section-index">i — Nuestra historia</span>
@@ -136,7 +143,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="reveal reveal-d1">
     <span class="section-index">ii — Filosofía</span>
     <h2 class="section-title">El diseño como <em>diálogo</em>.</h2>
-    <p class="phil-text" style="margin-top: 2rem;">
+    <p class="phil-text">
       Todo encargo comienza por escuchar. Los grandes espacios nacen de un intercambio
       honesto. No imponemos un estilo; descubrimos el tuyo.
     </p>
@@ -156,17 +163,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="team-grid">
     <div class="team-member reveal">
       <div class="team-photo">
-        <div class="team-photo-img" style="background-image: url('assets/img/team-portrait.jpg');"></div>
+        <img class="team-photo-img" src="assets/img/team-portrait.jpg" alt="Pamela Torres Salazar, Directora de Diseño" loading="lazy" width="800" height="1200">
       </div>
       <h3 class="team-name">Pamela Torres Salazar</h3>
       <p class="team-role">Directora de Diseño</p>
       <p class="team-bio-lede">Lidera la dirección creativa del estudio y cada proyecto desde el concepto.</p>
-      <p class="team-bio" style="margin-bottom: 0.9rem;">Cree que un espacio bien pensado trasciende su forma y su estética, se convierte en el escenario donde la vida sucede de manera natural.</p>
+      <p class="team-bio">Cree que un espacio bien pensado trasciende su forma y su estética, se convierte en el escenario donde la vida sucede de manera natural.</p>
       <p class="team-bio">Esa filosofía guía cada decisión, cada trazo y cada detalle.</p>
     </div>
     <div class="team-member reveal reveal-d1">
       <div class="team-photo">
-        <div class="team-photo-img" style="background-image: url('assets/img/team-portrait2.jpg');"></div>
+        <img class="team-photo-img" src="assets/img/team-portrait2.jpg" alt="Tomas Rodriguez Rojas, Director de Proyectos" loading="lazy" width="800" height="1022">
       </div>
       <h3 class="team-name">Tomas Rodriguez Rojas</h3>
       <p class="team-role">Director de Proyectos</p>
@@ -184,6 +191,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </p>
   <a href="contact.html" class="link-underline reveal reveal-d2">Escríbenos</a>
 </section>
+
+</main>
 
 <footer>
   <p>© 2026 Torres Rodriguez Arquitectos · Santo Domingo</p>

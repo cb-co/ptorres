@@ -4,48 +4,54 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A multi-page marketing site for **Torres Rodriguez Arquitectos** (trarq.com, Santo Domingo, DR). Copy is entirely in Spanish. Five static HTML pages share one external stylesheet and one external script. There is no build step and no framework. External dependencies are Google Fonts (`Cormorant Garamond`, `Jost`) and Unsplash CDN images that are placeholders for real project photography. The one server-side piece is a Vercel serverless function for the contact form (`api/contact.js`).
+A multi-page marketing site for **Torres Rodriguez Arquitectos** (Santo Domingo, DR), live at **https://www.trarq.com** (the apex `trarq.com` 308-redirects to `www`, so every canonical / OG / sitemap URL uses `www`). Copy is entirely in Spanish. Five static HTML pages share one stylesheet and one script. No build step, no framework, no server code. Hosted on Vercel as a static site.
+
+External services:
+- **Google Fonts** — `Cormorant Garamond`, `Jost`
+- **Google Tag Manager** — `GTM-M3QBFN9B`, snippet in every page's `<head>` + `<noscript>` after `<body>`
+- **Web3Forms** — contact form posts straight from the browser
+- **Behold.so** — Instagram feed widget on the home page
 
 ## File layout
 
 ```
 ptorres/
-├── index.html        # Home (full-bleed hero + section teasers)
-├── about.html        # Nosotros: story, philosophy, team
-├── gallery.html      # Proyectos: featured project + filterable grid
-├── contact.html      # Contact form, info, social, FAQ accordion
+├── index.html        # Home: full-bleed hero + section teasers
+├── about.html        # Nosotros: story, philosophy, team (2 members)
+├── gallery.html      # Proyectos: featured project + grid, lightbox per project
+├── contact.html      # Contact info, Web3Forms form, FAQ accordion
 ├── privacy.html      # Privacy policy (prose)
-├── favicon.ico       # Root favicon (TR monogram, walnut on cream)
-├── api/
-│   └── contact.js    # Vercel serverless fn → emails info@trarq.com (Resend REST)
+├── favicon.ico
+├── robots.txt / sitemap.xml
+├── vercel.json       # Cache + security headers
 ├── assets/
-│   ├── css/styles.css   # ALL styles for every page (single source of truth)
-│   ├── js/main.js       # ALL behavior: theme, reveal, gallery filter, FAQ, form
-│   ├── img/             # team-portrait.jpg + favicons (16/32/apple-touch)
-│   └── brand/torres-rodriguez-brand.pdf   # Source brand document
-├── CLAUDE.md
-└── .gitignore
+│   ├── css/styles.css   # ALL styles (single source of truth)
+│   ├── js/main.js       # ALL behavior
+│   ├── img/             # hero, team, favicons, og-image, projects/<project>/NN-name.{jpg,webp}
+│   └── brand/torres-rodriguez-brand.pdf
+└── CLAUDE.md
 ```
 
-Every page links `assets/css/styles.css` and `assets/js/main.js` and duplicates the same `<nav>` and `<footer>` markup (no templating — edit nav/footer in all pages together). The active nav item gets `class="is-active"`. When adding real photography, drop files in `assets/img/` and reference them via relative paths; portfolio/Instagram/team images are currently Unsplash CDN URLs (in `styles.css` as `.pp-*` / `.ig-*`, and inline on team/about) to be swapped for client photos.
+Every page links `assets/css/styles.css` and `assets/js/main.js` and duplicates the same `<nav>`, mobile drawer and `<footer>` (no templating — edit all five pages together). Page content sits inside `<main id="main">`, which the skip link targets. The active nav item gets `class="is-active"` in both the desktop nav and the mobile drawer.
 
 ## Running / previewing
 
-No build step. Serve the directory statically (e.g. `python3 -m http.server`) and visit `/`. The contact form POSTs to `/api/contact`, which only runs on Vercel — locally the form will show its error-fallback state, which is expected. After edits, hard-reload to bypass cache.
+Serve the directory statically (`python3 -m http.server`) and visit `/`. The contact form works locally too (it posts to Web3Forms directly). `vercel.json` headers only apply on Vercel.
 
 ## Architecture
 
-- **`assets/css/styles.css`** — all CSS. Driven by CSS custom properties on `:root`. Two theme layers: `:root` defines the **light** palette (default); `[data-theme="dark"]` on `<html>` forces dark. There is **no** `@media (prefers-color-scheme: dark)` — light is the unconditional default; `main.js` sets `data-theme="light"` on load unless the user previously chose dark in localStorage.
-- **`assets/js/main.js`** — one IIFE, all guarded with null-checks so it runs on every page. Features: theme toggle, `IntersectionObserver` scroll reveal, gallery category filter, FAQ accordion, and contact-form submit (fetch → `/api/contact`).
-- **Pages** — each is plain semantic HTML linking the shared CSS/JS. Home (`index.html`) is a single-scroll overview with section teasers that link out to the dedicated pages.
+- **`styles.css`** — driven by custom properties on `:root` (light palette, the default). `[data-theme="dark"]` on `<html>` overrides them. There is **no** `@media (prefers-color-scheme: dark)` — light is the unconditional default.
+- **`main.js`** — one IIFE; every feature is null-guarded so the file runs on every page. Features: theme toggle, scroll reveal, mobile nav drawer, gallery lightbox, FAQ accordion, contact-form validation + submit, custom select, Behold widget loader.
 
-### Theme toggle
-- Reads `localStorage['tr-theme']`. Saved `"dark"` activates dark mode; anything else stays light. The toggle button (`#themeToggle`) flips and persists. Choice carries across pages via localStorage.
-   - **Scroll reveal**: an `IntersectionObserver` adds `.visible` to any `.reveal` element when it enters the viewport. Stagger via `.reveal-d1` / `.reveal-d2` / `.reveal-d3`.
+### Theme
+- Saved choice lives in `localStorage['tr-theme']`; `"dark"` activates dark mode, anything else is light.
+- Each page has a one-line inline `<script>` in `<head>` that applies a saved dark theme **before first paint** (otherwise dark-mode users see a light flash). It is the one sanctioned exception to the no-inline-script rule — keep it identical on all five pages.
+- All `localStorage` access is wrapped in `try/catch`: it throws when site data is blocked, and an uncaught throw at the top of `main.js` would kill every feature on the page.
+
+### Hidden UI and focus
+The mobile drawer (`#navMobile`) and the lightbox (`#lightbox`) carry the `inert` attribute while closed, so their links/buttons are not tabbable or announced. `main.js` toggles `inert`, moves focus in on open (first drawer link / lightbox close button) and returns it on close. The lightbox traps Tab among its three buttons. Keep this pattern for any new off-screen UI.
 
 ## Brand palette (from PDF)
-
-Extracted from `assets/brand/torres-rodriguez-brand.pdf` swatch strip:
 
 | Variable | Hex | Role |
 |---|---|---|
@@ -56,24 +62,30 @@ Extracted from `assets/brand/torres-rodriguez-brand.pdf` swatch strip:
 | `--accent-mid` | `#968774` | Mid taupe |
 | `--accent` | `#5F4D3E` | Deep walnut (primary accent) |
 | `--text` | `#2A2118` | Body text |
-| `--text-muted` | `#8B7E6B` | Muted / secondary text |
+| `--text-muted` | `#6F6556` | Muted / secondary text (darkened from the PDF's `#8B7E6B` to meet WCAG AA 4.5:1 on `--bg`/`--bg-2`) |
 
-Dark mode uses warm near-blacks rather than neutral grays to stay within the brand family.
+Dark mode uses warm near-blacks rather than neutral grays. When changing colors, update both `:root` and `[data-theme="dark"]`, and keep small text at ≥ 4.5:1 contrast.
 
 ## Logo (TR monogram)
 
-The TR monogram from the PDF is embedded as a base64 PNG in the CSS custom property `--logo-mark` on `:root`, applied via CSS masking:
+Embedded as a base64 PNG in `--logo-mark` on `:root` and applied with CSS masking (`.logo-mark { background-color: var(--accent); mask: var(--logo-mark) … }`), so it recolors with the theme. Do not replace it with a plain `background-image`.
 
-```css
-.logo-mark {
-  width: 40px; height: 40px;
-  background-color: var(--accent);
-  -webkit-mask: var(--logo-mark) center / contain no-repeat;
-          mask: var(--logo-mark) center / contain no-repeat;
-}
-```
+## Images
 
-This makes the monogram recolorable — it inherits `--accent` and adapts to dark mode without needing a separate asset. Do not replace `--logo-mark` with a plain `background-image`; that would break theme adaptability.
+- **Every photo ships as JPEG + WebP sibling** (`01-salon.jpg` + `01-salon.webp`) and is marked up as:
+  ```html
+  <picture>
+    <source type="image/webp" srcset="assets/img/projects/merlot/01-salon.webp">
+    <img src="assets/img/projects/merlot/01-salon.jpg" alt="…" loading="lazy" width="1600" height="1066">
+  </picture>
+  ```
+  Generate the WebP at the same dimensions, quality ~78 (e.g. `cwebp -q 78 in.jpg -o in.webp`). Keep `width`/`height` equal to the real pixel size.
+- Project cards crop landscape photos into 4:5 boxes (`object-fit: cover`), so they need near-full resolution even on phones — don't ship smaller "thumbnails".
+- `vercel.json` caches `/assets/img/*` for 30 days. **When replacing a photo, give it a new filename** (or returning visitors keep the old one).
+
+## Hero (`index.html`)
+
+A `<picture class="hero-media">` (WebP 1280/1920 `srcset` + `hero.jpg` 1920px fallback, `fetchpriority="high"`) absolutely positioned behind the text; the dark gradient overlay is `.hero::after` (heavier in dark mode). The source photo is square, so `sizes` uses `100vh` in portrait. To swap the photo, regenerate all three files and match the overlay strength to the new photo's luminance.
 
 ## Section pattern
 
@@ -84,60 +96,37 @@ This makes the monogram recolorable — it inherits `--accent` and adapts to dar
 </div>
 ```
 
-`.section-index` is a small italic Cormorant marker (`i —`, `ii —`, etc.). `.section-title` is the large display headline with `<em>` for the italic walnut accent.
+## Home projects teaser
 
-## Hero
-
-Full-bleed background image (Unsplash interior placeholder) with a vertical dark gradient overlay for text legibility. Typography is centered: small uppercase eyebrow → large Cormorant company name (`Torres Rodriguez Arquitectos`) → italic Cormorant tagline → underlined CTA. A pulsing 1px vertical line at the bottom acts as a scroll cue. All hero text is light cream over the dark overlay.
-
-To swap the hero image, change the `background:` URL in the `.hero` rule. Match the overlay strength to the new photo's luminance — a bright photo needs a heavier overlay, a dark photo needs a lighter one.
-
-## Portfolio / projects
-
-The home `#projects` teaser shows 3 projects in a 6-col grid (one `.project.is-feature` spanning all 6 at 16:7, two span-3 at 4:5). Project images come from `.pp-1`…`.pp-9` rules in `styles.css` (Unsplash placeholders). `.project-img::before` does the hover zoom + saturation; `.project-meta`'s hairline `border-top` turns `--accent` on hover. To use real photos, repoint the `.pp-*` rules at files under `assets/img/`.
+`#projects` shows 3 cards in a 6-col grid: one `.project.is-feature` (span 6, 16:7) and two span-3 (4:5). Cards link to `gallery.html`.
 
 ## Gallery page (`gallery.html`)
 
-A `page-hero` header, a single always-visible featured project, a category filter bar, then a filterable uniform grid of 8 projects. Each grid `.project` carries `data-category` (`residencial` / `interiores` / `comercial` / `hospitalidad`); the filter buttons carry `data-filter`. `main.js` toggles `.is-hidden`. Gallery project tiles are non-clickable `div.project-link` (no detail pages exist yet), so there are no dead links.
+A featured project (`.gallery-feature`) above a `.gallery-grid`. Each card is an `article.project[data-project="<key>"]` with a `div.project-link[role=button][tabindex=0]`; clicking or Enter/Space opens the lightbox for that key. The photo lists live in `projectImages` in `main.js` (file basenames per project folder, shown as `.webp`); the "N fotos" badge on each card is filled from that list. **To add a project:** add the folder of `.jpg` + `.webp` files, add a key to `projectImages` and `projectNames`, and add the card. There is no category filter.
 
 ## About page (`about.html`)
 
-Story (`.about` 2-col), philosophy quote (`.philosophy`), and a 3-member `.team` grid. Team photos are set inline on `.team-photo-img` (`background-image`); the principal uses the local `assets/img/team-portrait.jpg`, the others are Unsplash placeholders. Hover lifts grayscale + scales.
+Story (`.about`), philosophy quote (`.philosophy`), and a 2-member `.team` grid. Team photos are `<img class="team-photo-img">` with real alt text.
 
-## Contact page + form (`contact.html`, `api/contact.js`)
+## Contact page (`contact.html`)
 
-Two-column layout: info column (email/phone/address + social icons) and a styled form (`#contactForm`, underline-only fields). On submit, `main.js` prevents default, POSTs JSON to the form `action` (`/api/contact`), and shows a success/error status. `api/contact.js` is a Vercel serverless function that emails `info@trarq.com` via the Resend REST API (native `fetch`, no npm deps) — set `RESEND_API_KEY` (and verify a sending domain) in Vercel env to go live. An FAQ accordion (`.faq-item` + `.faq-q`/`.faq-a`) is toggled by `main.js`; answers are placeholders (`[Contenido por definir]`).
+- **Form** (`#contactForm`) posts JSON to `https://api.web3forms.com/submit`. The access key in the hidden input is public by design. Hidden fields: `from_name`, `subject`, and `botcheck` (Web3Forms honeypot checkbox, hidden via `.form-honeypot`). `main.js` validates name/email/message, sets `aria-invalid` + `aria-describedby` on errors, focuses the first invalid field, and shows success/error in `.form-status` (`role="status"`).
+- **Custom select** ("Tipo de proyecto", `.cs`) follows the WAI-ARIA *select-only combobox* pattern: the `.cs-trigger` button has `role="combobox"`, `aria-expanded`, `aria-controls` and `aria-activedescendant`; focus never leaves it. Open state is the `.is-open` class on `.cs`. The chosen value goes into the hidden `<input name="project">` immediately before `.cs`.
+- **FAQ** accordion (`.faq-item` / `.faq-q` / `.faq-a`), one open at a time.
 
-## Favicon
+## Instagram (`#instagram` on home)
 
-`favicon.ico` (root) + `assets/img/favicon-16.png`, `favicon-32.png`, `apple-touch-icon.png` are the TR monogram in walnut (`#5F4D3E`) on cream (`#F2F0ED`), generated from the same base64 monogram used for `--logo-mark`. All pages link them in `<head>`.
-
-## Instagram (`#instagram`)
-
-Two-column layout: copy block on the left, 2×2 grid of square tiles (`.ig-1`–`.ig-4`, Unsplash placeholders) on the right. **To make the feed live**, drop a free widget into `.insta-grid` — Behold.so (free, no watermark), SnapWidget, or LightWidget. A comment in `index.html` above `.insta-grid` notes this.
-
-## Instagram (`#instagram`)
-
-Two-column layout: copy block on the left (section title, sub-paragraph, `@ptorres.rodriguez` link), 2×2 grid of square tiles on the right. Tiles currently use Unsplash placeholders via `.ig-1`–`.ig-4`. Each tile links to the Instagram profile.
-
-**To make the feed live**: drop a free Instagram widget into the `.insta-grid`. Best options:
-- **Behold.so** — free up to 50K monthly views, no watermark, modern dashboard.
-- **SnapWidget** — free with a small watermark.
-- **LightWidget** — free with a small watermark.
-
-There's a comment in `index.html` above `.insta-grid` listing these options.
+The `.insta-grid` holds `<behold-widget feed-id="…">`; `main.js` injects the Behold script only when that element exists.
 
 ## Scroll reveal
 
-Add class `reveal` to any element. Optionally add `reveal-d1`, `reveal-d2`, or `reveal-d3` for staggered delay. The IntersectionObserver in `main.js` adds `.visible` when the element enters the viewport. `prefers-reduced-motion` disables reveals and the scroll-cue animation.
+Add `reveal` to any element (optionally `reveal-d1`/`-d2`/`-d3` for stagger). An `IntersectionObserver` adds `.visible`. `prefers-reduced-motion` disables reveals and the hero scroll cue.
 
 ## Conventions
 
-- All content/copy is in Spanish.
-- Styles live ONLY in `assets/css/styles.css`; behavior ONLY in `assets/js/main.js`. Don't reintroduce inline `<style>`/`<script>` blocks.
-- `<nav>` and `<footer>` are duplicated per page — when you change one, change all five. Set `is-active` on the current page's nav link.
-- Animations and reveals: `.reveal` + `.reveal-dN` — don't introduce a new system.
-- Do not use `@media (prefers-color-scheme: dark)` — light is the unconditional default. Use `[data-theme="dark"]` selectors only.
-- When changing palette colors, update both `:root` (light) and `[data-theme="dark"]` blocks together.
-- Real images go under `assets/img/` and are referenced with relative paths (no leading slash).
-- Placeholders to replace before launch: FAQ answers, team names/bios, Facebook/Pinterest URLs (Instagram `@ptorres.rodriguez`, phone, email, and address are real), and all Unsplash images.
+- All copy is in Spanish.
+- Styles live ONLY in `styles.css`; behavior ONLY in `main.js`. No inline `style=""` or `<script>` blocks — except the GTM snippets and the head theme snippet described above.
+- `<nav>`, mobile drawer and `<footer>` are duplicated per page — change all five together.
+- Animations: `.reveal` + `.reveal-dN` only.
+- Absolute URLs (canonical, `og:*`, JSON-LD, sitemap) use `https://www.trarq.com/`.
+- Images go under `assets/img/`, referenced with relative paths (no leading slash), JPEG + WebP.

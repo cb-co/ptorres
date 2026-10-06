@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Apply saved dark theme before first paint (avoids a light flash) -->
+<script>try{if(localStorage.getItem('tr-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -19,9 +21,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="keywords" content="arquitectos santo domingo, arquitectura, interiorismo, diseño de interiores, remodelación, decoración de interiores, arquitectura residencial, diseño comercial, república dominicana, torres rodriguez arquitectos">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" fetchpriority="high" href="assets/img/hero.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
-<link rel="canonical" href="https://trarq.com/">
+<link rel="canonical" href="https://www.trarq.com/">
 <meta name="author" content="Torres Rodriguez Arquitectos">
 <meta name="theme-color" content="#F2F0ED" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1E1812" media="(prefers-color-scheme: dark)">
@@ -31,8 +32,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="es_DO">
 <meta property="og:title" content="Torres Rodriguez Arquitectos | Arquitectura, Interiorismo & Remodelación en Santo Domingo">
 <meta property="og:description" content="Estudio de arquitectura, interiorismo y remodelación en Santo Domingo. Diseñamos residencias e interiores de servicio completo en toda la República Dominicana.">
-<meta property="og:url" content="https://trarq.com/">
-<meta property="og:image" content="https://trarq.com/assets/img/og-image.png">
+<meta property="og:url" content="https://www.trarq.com/">
+<meta property="og:image" content="https://www.trarq.com/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Torres Rodriguez Arquitectos — Arquitectura & Diseño Interior">
@@ -40,17 +41,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Torres Rodriguez Arquitectos | Arquitectura, Interiorismo & Remodelación en Santo Domingo">
 <meta name="twitter:description" content="Estudio de arquitectura, interiorismo y remodelación en Santo Domingo. Diseñamos residencias e interiores de servicio completo en toda la República Dominicana.">
-<meta name="twitter:image" content="https://trarq.com/assets/img/og-image.png">
+<meta name="twitter:image" content="https://www.trarq.com/assets/img/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": "https://trarq.com/#estudio",
+  "@id": "https://www.trarq.com/#estudio",
   "name": "Torres Rodriguez Arquitectos",
   "description": "Estudio de arquitectura y diseño interior de servicio completo en Santo Domingo, fundado en 2018.",
-  "url": "https://trarq.com/",
-  "logo": "https://trarq.com/assets/img/apple-touch-icon.png",
-  "image": "https://trarq.com/assets/img/og-image.png",
+  "url": "https://www.trarq.com/",
+  "logo": "https://www.trarq.com/assets/img/apple-touch-icon.png",
+  "image": "https://www.trarq.com/assets/img/og-image.png",
   "telephone": "+1-829-637-7225",
   "email": "info@trarq.com",
   "foundingDate": "2018",
@@ -83,6 +84,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3QBFN9B"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<a class="skip-link" href="#main">Saltar al contenido</a>
 <nav>
   <button class="nav-hamburger" id="navToggle" aria-label="Abrir menú" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
   <a href="index.html" class="nav-logo" aria-label="Torres Rodriguez Arquitectos — Inicio">
@@ -116,7 +118,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </button>
   </div>
 </nav>
-<div class="nav-mobile" id="navMobile" aria-hidden="true">
+<div class="nav-mobile" id="navMobile" inert>
   <ul class="nav-mobile-links">
     <li><a href="about.html">Nosotros</a></li>
     <li><a href="gallery.html">Proyectos</a></li>
@@ -124,7 +126,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </ul>
 </div>
 
+<main id="main" tabindex="-1">
 <section class="hero">
+  <picture class="hero-media">
+    <source type="image/webp"
+            srcset="assets/img/hero-1280.webp 1280w, assets/img/hero-1920.webp 1920w"
+            sizes="(orientation: portrait) 100vh, 100vw">
+    <img src="assets/img/hero.jpg" alt="" width="1920" height="1920" fetchpriority="high">
+  </picture>
   <div class="hero-content">
     <p class="hero-eyebrow">Santo Domingo · Fundado 2018</p>
     <h1 class="hero-name">
@@ -148,7 +157,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="about" id="about">
   <div class="about-grid">
     <div class="about-visual reveal">
-      <img class="about-visual-img" src="assets/img/home-nosotros.jpg" alt="Estudio Torres Rodriguez Arquitectos, Santo Domingo" loading="lazy" width="1200" height="1500">
+      <picture>
+        <source type="image/webp" srcset="assets/img/home-nosotros.webp">
+        <img class="about-visual-img" src="assets/img/home-nosotros.jpg" alt="Estudio Torres Rodriguez Arquitectos, Santo Domingo" loading="lazy" width="1200" height="1500">
+      </picture>
     </div>
     <div class="about-text reveal reveal-d1">
       <span class="section-index">i — Nosotros</span>
@@ -179,9 +191,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <article class="project is-feature reveal">
       <a href="gallery.html" class="project-link">
         <div class="project-img">
-          <img src="assets/img/projects/merlot/01-salon.jpg"
+          <picture>
+            <source type="image/webp" srcset="assets/img/projects/merlot/01-salon.webp">
+            <img src="assets/img/projects/merlot/01-salon.jpg"
                alt="Gran Merlot — sala principal, Santo Domingo"
                loading="lazy" width="1600" height="1066">
+          </picture>
         </div>
         <div class="project-meta">
           <span class="project-name">Gran Merlot</span>
@@ -192,9 +207,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <article class="project reveal">
       <a href="gallery.html" class="project-link">
         <div class="project-img">
-          <img src="assets/img/projects/costambar/01-living.jpg"
+          <picture>
+            <source type="image/webp" srcset="assets/img/projects/costambar/01-living.webp">
+            <img src="assets/img/projects/costambar/01-living.jpg"
                alt="Villa Costambar — sala de estar, Puerto Plata"
                loading="lazy" width="1600" height="1066">
+          </picture>
         </div>
         <div class="project-meta">
           <span class="project-name">Villa Costambar</span>
@@ -205,9 +223,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <article class="project reveal reveal-d1">
       <a href="gallery.html" class="project-link">
         <div class="project-img">
-          <img src="assets/img/projects/merlot25/04-panoramic.jpg"
+          <picture>
+            <source type="image/webp" srcset="assets/img/projects/merlot25/04-panoramic.webp">
+            <img src="assets/img/projects/merlot25/04-panoramic.jpg"
                alt="Gran Merlot — vista panorámica, Santo Domingo"
                loading="lazy" width="1600" height="1066">
+          </picture>
         </div>
         <div class="project-meta">
           <span class="project-name">Gran Merlot</span>
@@ -226,7 +247,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="reveal reveal-d1">
     <span class="section-index">iii — Estudio</span>
     <h2 class="section-title">El diseño como <em>diálogo</em>.</h2>
-    <p class="phil-text" style="margin-top: 2rem;">
+    <p class="phil-text">
       Todo encargo comienza por escuchar. Los grandes espacios nacen de un intercambio
       honesto. No imponemos un estilo; descubrimos el tuyo.
     </p>
@@ -278,6 +299,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <a href="contact.html" class="link-underline reveal reveal-d3">Escríbenos</a>
 </section>
+
+</main>
 
 <footer>
   <p>© 2026 Torres Rodriguez Arquitectos · Santo Domingo</p>
